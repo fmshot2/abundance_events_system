@@ -6,8 +6,19 @@ use App\Models\Event;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
 
+use App\Interfaces\EventRepositoryInterface;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
 class EventController extends Controller
 {
+    private EventRepositoryInterface $eventRepository;
+
+    public function __contrust(EventRepositoryInterface $eventRepository)
+    {
+        $this->eventRepository = $eventRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +26,9 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+            'event' => $this->eventRepository->getAllEvents()
+        ]);
     }
 
     /**
@@ -25,7 +38,9 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        // //details');
+        // $table->string('title');
+        // $table->dateTime('date
     }
 
     /**

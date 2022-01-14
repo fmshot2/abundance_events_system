@@ -5,9 +5,9 @@ namespace App\Repositories;
 use App\Interfaces\ServiceRepositoryInterface;
 use App\Models\Service;
 
-class ServiceRepository implements ServiceRepositoryInterface 
+class ServiceRepository implements ServiceRepositoryInterface
 {
-    public function getAllServices() 
+    public function getAllServices()
     {
         return Service::all();
     }
@@ -27,12 +27,12 @@ class ServiceRepository implements ServiceRepositoryInterface
         return Service::create($serviceDetails);
     }
 
-    public function updateService($serviceId, array $newDetails);
+    public function updateService($serviceId, array $newDetails)
     {
         return Order::whereId($serviceId)->update($newDetails);
     }
 
-    // public function getFulfilledOrders() 
+    // public function getFulfilledOrders()
     // {
     //     return Order::where('is_fulfilled', true);
     // }

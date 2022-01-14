@@ -5,34 +5,34 @@ namespace App\Repositories;
 use App\Interfaces\EventRepositoryInterface;
 use App\Models\Event;
 
-class EventRepository implements EventRepositoryInterface 
+class EventRepository implements EventRepositoryInterface
 {
-    public function getAllEvents() 
+    public function getAllEvents()
     {
         return Event::all();
     }
 
-    public function getEventById($eventId) 
+    public function getEventById($eventId)
     {
-        return Order::findOrFail($eventId);
+        return Event::findOrFail($eventId);
     }
 
-    public function deleteEvent($eventId) 
+    public function deleteEvent($eventId)
     {
-        Order::destroy($aboutId);
+        Event::destroy($aboutId);
     }
 
-    public function createEvent(array $eventDetails) 
+    public function createEvent(array $eventDetails)
     {
-        return Order::create($eventDetails);
+        return Event::create($eventDetails);
     }
 
-    public function updateEvent($eventId, array $newDetails) 
+    public function updateEvent($eventId, array $newDetails)
     {
-        return Order::whereId($eventId)->update($newDetails);
+        return Event::whereId($eventId)->update($newDetails);
     }
 
-    // public function getFulfilledOrders() 
+    // public function getFulfilledOrders()
     // {
     //     return Order::where('is_fulfilled', true);
     // }

@@ -8,14 +8,21 @@ use App\Http\Requests\UpdateDetailRequest;
 
 class DetailController extends Controller
 {
+
+    private DetailRepositoryInterface $detailRepository;
+
+    public function __construct(DetailRepositoryInterface $detailRepository)
+    {
+        $this->detailRepository = $detailRepository;
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() : JsonRespnse
     {
-        //
+        $allAbout = Detail::all();
     }
 
     /**
@@ -36,7 +43,17 @@ class DetailController extends Controller
      */
     public function store(StoreDetailRequest $request)
     {
-        //
+        $details = $request->only([
+            'title',
+            'details'
+        ]);
+
+        return response()->json(
+            [
+                'data' => $this->detailRepository->createAbout($aboutDetails)
+            ],
+            Response::HTTP_CREATED
+        );
     }
 
     /**

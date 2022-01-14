@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\EventController;
+
 
 
 /*
@@ -26,4 +28,12 @@ Route::get('about/{id}', [AboutController::class, 'show']);
 Route::post('about', [AboutController::class, 'store']);
 Route::put('about/{id}', [AboutController::class, 'update']);
 Route::delete('about/{id}', [AboutController::class, 'delete']);
+
+
+Route::get('event', [EventController::class, 'index']);
+// Route::get('about/{id}', [AboutController::class, 'show']);
+// Route::post('about', [AboutController::class, 'store']);
+// Route::put('about/{id}', [AboutController::class, 'update']);
+// Route::delete('about/{id}', [AboutController::class, 'delete']);
+
 
