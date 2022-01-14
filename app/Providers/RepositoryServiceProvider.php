@@ -13,18 +13,12 @@ use App\Interfaces\TestimonyRepositoryInterface;
 use App\Repositories\TestimonyRepository;
 
 use App\Interfaces\DetailRepositoryInterface;
-useApp\Repositories\DetailRepository;
+use App\Repositories\DetailRepository;
 
 
 
 class RepositoryServiceProvider extends ServiceProvider
 {
-    private $detailRepository;
-
-    public function __construct(DetailRepositoryInterface $detailRepository)
-    {
-        $this->$detailRepository = $detailRepository;
-    }
 
     /**
      * Register services.
@@ -36,6 +30,7 @@ class RepositoryServiceProvider extends ServiceProvider
     $this->app->bind(AboutRepositoryInterface::class, AboutRepository::class);
     $this->app->bind(EventRepositoryInterface::class, EventRepository::class);
     $this->app->bind(TestimonyRepositoryInterface::class, TestimonyRepository::class);
+    $this->app->bind(DetailRepositoryInterface::class, DetailRepository::class);
 
  }
 
