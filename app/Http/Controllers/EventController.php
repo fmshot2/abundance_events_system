@@ -13,18 +13,19 @@ use Illuminate\Http\Response;
 
 class EventController extends Controller
 {
-    private EventRepositoryInterface $eventRepository;
+    private $eventRepository;
 
-    public function __contrust(EventRepositoryInterface $eventRepository)
+    public function __construct(EventRepositoryInterface $eventRepository)
     {
         $this->eventRepository = $eventRepository;
     }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): JsonResponse
     {
         return response()->json([
             'event' => $this->eventRepository->getAllEvents()

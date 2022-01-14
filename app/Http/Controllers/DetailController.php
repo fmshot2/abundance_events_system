@@ -22,7 +22,9 @@ class DetailController extends Controller
      */
     public function index() : JsonRespnse
     {
-        $allAbout = Detail::all();
+        return reponse()->json([
+            'system_config' => $this->detailRepository->getAllDetails()
+        ]);
     }
 
     /**
