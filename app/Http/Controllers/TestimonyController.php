@@ -6,7 +6,6 @@ use App\Models\Testimony;
 use App\Http\Requests\StoreTestimonyRequest;
 use App\Http\Requests\UpdateTestimonyRequest;
 
-
 use App\Interfaces\TestimonyRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -14,14 +13,8 @@ use Illuminate\Http\Response;
 
 class TestimonyController extends Controller
 {
-    // private TestimonyRepositoryInterface $testimonyRepository;
 
-    // public function __construct(TestimonyRepositoryInterface $testimonyRepository)
-    // {
-    //     $this->testimonyRepository = $testimonyRepository;
-    // }
-
-    private $testimonyRepository;
+    private TestimonyRepositoryInterface $testimonyRepository;
 
     public function __construct(TestimonyRepositoryInterface $testimonyRepository)
     {

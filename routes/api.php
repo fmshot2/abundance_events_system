@@ -46,4 +46,11 @@ Route::get('testimony', [TestimonyController::class, 'index']);
 // Route::put('about/{id}', [AboutController::class, 'update']);
 // Route::delete('about/{id}', [AboutController::class, 'delete']);
 
+Route::get('service')
 
+Service
+ upcoming events
+Previous  events
+Configuration
+API's to send
+[12:11 PM, 1/17/2022] Md: Statistics
