@@ -15,6 +15,12 @@ use App\Repositories\TestimonyRepository;
 use App\Interfaces\DetailRepositoryInterface;
 use App\Repositories\DetailRepository;
 
+use App\Interfaces\ServiceRepositoryInterface;
+use App\Repositories\ServiceRepositorys;
+
+use App\Interfaces\StatisticRepositoryInterface;
+use App\Repositories\StatisticRepositorys;
+
 
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -31,6 +37,10 @@ class RepositoryServiceProvider extends ServiceProvider
     $this->app->bind(EventRepositoryInterface::class, EventRepository::class);
     $this->app->bind(TestimonyRepositoryInterface::class, TestimonyRepository::class);
     $this->app->bind(DetailRepositoryInterface::class, DetailRepository::class);
+    $this->app->bind(ServiceRepositoryInterface::class, ServiceRepository::class);
+    $this->app->bind(StatisticRepositoryInterface::class, StatisticRepository::class);
+
+
 
  }
 

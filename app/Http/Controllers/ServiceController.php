@@ -6,8 +6,23 @@ use App\Models\Service;
 use App\Http\Requests\StoreServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
 
+use App\Interfaces\AboutRepositoryInterface;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
+
 class ServiceController extends Controller
 {
+
+    private ServiceRepositoryInterface $serviceRepository;
+
+    public function __construct(ServiceRepositoryInterface $serviceRepository)
+    {
+        $this->serviceRepository = $serviceRepository;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +30,9 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+            'services' => $this->serviceRepository->getAllServices()
+        ]);
     }
 
     /**
