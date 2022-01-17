@@ -6,6 +6,12 @@ use App\Models\Detail;
 use App\Http\Requests\StoreDetailRequest;
 use App\Http\Requests\UpdateDetailRequest;
 
+use App\Interfaces\DetailRepositoryInterface;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
+
 class DetailController extends Controller
 {
 
