@@ -9,6 +9,6 @@ class StatisticRepository implements StatisticRepositoryInterface
 {
     public function getAllStatistics()
     {
-        return Statistic::all();
+        return Statistic::first();
     }
 }
