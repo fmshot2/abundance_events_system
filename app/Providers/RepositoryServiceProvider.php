@@ -16,10 +16,10 @@ use App\Interfaces\DetailRepositoryInterface;
 use App\Repositories\DetailRepository;
 
 use App\Interfaces\ServiceRepositoryInterface;
-use App\Repositories\ServiceRepositorys;
+use App\Repositories\ServiceRepository;
 
 use App\Interfaces\StatisticRepositoryInterface;
-use App\Repositories\StatisticRepositorys;
+use App\Repositories\StatisticRepository;
 
 
 
