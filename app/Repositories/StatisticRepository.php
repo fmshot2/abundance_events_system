@@ -7,8 +7,8 @@ use App\Models\Statistic;
 
 class StatisticRepository implements StatisticRepositoryInterface
 {
-        public function getAllStatistics()
-    {
-        return Statistic::all();
-    }
+    public function getAllStatistics()
+        {
+            return Statistic::all();
+        }
 }

@@ -1,8 +1,9 @@
 <?
 
-namespace App\Intefaces;
+namespace App\Interfaces;
 
-interface StatisticRepositoryInterface {
+interface StatisticRepositoryInterface
+{
 
     public function getAllStatistics();
 }
