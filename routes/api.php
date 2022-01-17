@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\TestimonyController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\DetailController;
+use App\Http\Controllers\StatisticController;
 
 
 
@@ -46,11 +49,13 @@ Route::get('testimony', [TestimonyController::class, 'index']);
 // Route::put('about/{id}', [AboutController::class, 'update']);
 // Route::delete('about/{id}', [AboutController::class, 'delete']);
 
-Route::get('service')
+Route::get('service', [ServiceController::class, 'index']);
 
-Service
- upcoming events
-Previous  events
-Configuration
-API's to send
-[12:11 PM, 1/17/2022] Md: Statistics
+
+Route::get('system_config', [DetailController::class, 'index']);
+
+
+
+
+
+Route::get('statistic', [StatisticController::class, 'index']);
