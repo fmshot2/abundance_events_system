@@ -15,7 +15,7 @@ class AboutFactory extends Factory
     {
         return [
             'details'       => $this->faker->sentences(4, true),
-            'title'         => $this->faker->title(),
+            'title'         => $this->faker->name(),
         ];
     }
 }

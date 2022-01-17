@@ -15,7 +15,7 @@ class EventFactory extends Factory
     {
         return [
             'details'       => $this->faker->sentences(4, true),
-            'title'         => $this->faker->title(),
+            'title'         => $this->faker->name(),
             'date'          => $this->faker->dateTime($max = 'now', $timezone = null),
         ];
     }

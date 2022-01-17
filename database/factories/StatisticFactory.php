@@ -14,7 +14,7 @@ class StatisticFactory extends Factory
     public function definition()
     {
         return [
-            'title'         => $this->faker->title(),
+            'title'         => $this->faker->name(),
             'value'       => $this->faker->unique()->randomNumber(4),
         ];
     }
