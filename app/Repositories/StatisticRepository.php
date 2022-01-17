@@ -19,3 +19,4 @@ class AboutRepository implements AboutRepositoryInterface
     {
         return About::first();
     }
+}
