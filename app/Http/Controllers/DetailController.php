@@ -29,7 +29,7 @@ class DetailController extends Controller
 
     public function index() : JsonResponse
     {
-        return reponse()->json([
+        return response()->json([
             'system_config' => $this->detailRepository->getAllDetails()
         ]);
     }
