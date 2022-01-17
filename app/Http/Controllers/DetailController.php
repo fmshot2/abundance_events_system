@@ -27,7 +27,7 @@ class DetailController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index() : JsonRespnse
+    public function index() : JsonResponse
     {
         return reponse()->json([
             'system_config' => $this->detailRepository->getAllDetails()
