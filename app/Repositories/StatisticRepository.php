@@ -12,11 +12,3 @@ class StatisticRepository implements StatisticRepositoryInterface
         return Statistic::all();
     }
 }
-
-class AboutRepository implements AboutRepositoryInterface
-{
-    public function getAllAbouts()
-    {
-        return About::first();
-    }
-}
