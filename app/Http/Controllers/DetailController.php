@@ -26,6 +26,7 @@ class DetailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index() : JsonRespnse
     {
         return reponse()->json([
