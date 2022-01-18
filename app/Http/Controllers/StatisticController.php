@@ -27,7 +27,7 @@ class StatisticController extends Controller
     public function index(): JsonResponse
     {
         return response()->json([
-            'statistic' => $this->statsRepository->getAllStatistics()
+            'statistic' => $this->statsRepository->getAllStats()
         ]);
     }
 
