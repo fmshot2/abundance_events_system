@@ -6,18 +6,18 @@ use App\Models\Statistic;
 use App\Http\Requests\StoreStatisticRequest;
 use App\Http\Requests\UpdateStatisticRequest;
 
-use App\Interfaces\StatisticRepositoryInterface;
+use App\Interfaces\StatsRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class StatisticController extends Controller
 {
-    private StatisticRepositoryInterface $statisticRepository;
+    private StatsRepositoryInterface $statsRepository;
 
-    public function __construct(StatisticRepositoryInterface $statisticRepository)
+    public function __construct(StatsRepositoryInterface $statsRepository)
     {
-        $this->statisticRepository = $statisticRepository;
+        $this->statsRepository = $statsRepository;
     }
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class StatisticController extends Controller
     public function index(): JsonResponse
     {
         return response()->json([
-            'statistic' => $this->statisticRepository->getAllStatistics()
+            'statistic' => $this->statsRepository->getAllStatistics()
         ]);
     }
 

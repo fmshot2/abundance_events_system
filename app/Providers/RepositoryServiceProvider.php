@@ -18,8 +18,8 @@ use App\Repositories\DetailRepository;
 use App\Interfaces\ServiceRepositoryInterface;
 use App\Repositories\ServiceRepository;
 
-use App\Interfaces\StatisticRepositoryInterface;
-use App\Repositories\StatisticRepository;
+use App\Interfaces\StatsRepositoryInterface;
+use App\Repositories\StatsRepository;
 
 
 
@@ -38,7 +38,7 @@ class RepositoryServiceProvider extends ServiceProvider
     $this->app->bind(TestimonyRepositoryInterface::class, TestimonyRepository::class);
     $this->app->bind(DetailRepositoryInterface::class, DetailRepository::class);
     $this->app->bind(ServiceRepositoryInterface::class, ServiceRepository::class);
-    $this->app->bind(StatisticRepositoryInterface::class, StatisticRepository::class);
+    $this->app->bind(StatsRepositoryInterface::class, StatsRepository::class);
 
 
 
