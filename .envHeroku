@@ -9,11 +9,11 @@ LOG_DEPRECATIONS_CHANNEL=null
 LOG_LEVEL=debug
 
 DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-127.0.0.1=3306
-DB_DATABASE=ahi
-DB_USERNAME=root
-DB_PASSWORD=
+DB_HOST=http://ahi-env.eba-rmzhgxwi.us-east-2.elasticbeanstalk.com/
+DB_PORT=3306
+DB_DATABASE=aa1373nzekuf1b8
+DB_USERNAME=fmshot
+DB_PASSWORD=nazarene
 
 BROADCAST_DRIVER=log
 CACHE_DRIVER=file
