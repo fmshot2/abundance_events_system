@@ -6,16 +6,32 @@ use App\Models\Detail;
 use App\Http\Requests\StoreDetailRequest;
 use App\Http\Requests\UpdateDetailRequest;
 
+use App\Interfaces\DetailRepositoryInterface;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
+
 class DetailController extends Controller
 {
+
+    private DetailRepositoryInterface $detailRepository;
+
+    public function __construct(DetailRepositoryInterface $detailRepository)
+    {
+        $this->detailRepository = $detailRepository;
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function index() : JsonResponse
     {
-        //
+        return response()->json([
+            'system_config' => $this->detailRepository->getAllDetails()
+        ]);
     }
 
     /**
@@ -36,7 +52,17 @@ class DetailController extends Controller
      */
     public function store(StoreDetailRequest $request)
     {
-        //
+        $details = $request->only([
+            'title',
+            'details'
+        ]);
+
+        return response()->json(
+            [
+                'data' => $this->detailRepository->createAbout($aboutDetails)
+            ],
+            Response::HTTP_CREATED
+        );
     }
 
     /**

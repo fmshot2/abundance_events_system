@@ -15,14 +15,18 @@ class DetailFactory extends Factory
     {
         return [
             'details'       => $this->faker->sentences(4, true),
-            'email'         => $this->faker->unique()->safeEmail(),
+            'email_1'         => $this->faker->unique()->safeEmail(),
+            'email_2'         => $this->faker->unique()->safeEmail(),
+            'email_3'         => $this->faker->unique()->safeEmail(),
+            'phone_1'         => $this->faker->unique()->regexify('09[0-9]{9}'),
+            'phone_2'         => $this->faker->unique()->regexify('09[0-9]{9}'),
+            'phone_3'         => $this->faker->unique()->regexify('09[0-9]{9}'),
             'address'       => $this->faker->paragraph(),
             'facebook'      => $this->faker->url(),
             'linkedin'      => $this->faker->url(),
             'twitter'       => $this->faker->url(),
             'youtube'       => $this->faker->url(),
             'instagram'     => $this->faker->url(),
-            'email2'        => $this->faker->url(),
         ];
     }
 }

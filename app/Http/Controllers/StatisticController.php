@@ -2,36 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Service;
-use App\Http\Requests\StoreServiceRequest;
-use App\Http\Requests\UpdateServiceRequest;
+use App\Models\Statistic;
+use App\Http\Requests\StoreStatisticRequest;
+use App\Http\Requests\UpdateStatisticRequest;
 
-use App\Interfaces\ServiceRepositoryInterface;
+use App\Interfaces\StatsRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-
-class ServiceController extends Controller
+class StatisticController extends Controller
 {
+    private StatsRepositoryInterface $statsRepository;
 
-    private ServiceRepositoryInterface $serviceRepository;
-
-    public function __construct(ServiceRepositoryInterface $serviceRepository)
+    public function __construct(StatsRepositoryInterface $statsRepository)
     {
-        $this->serviceRepository = $serviceRepository;
+        $this->statsRepository = $statsRepository;
     }
-
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): JsonResponse
     {
         return response()->json([
-            'services' => $this->serviceRepository->getAllServices()
+            'statistic' => $this->statsRepository->getAllStats()
         ]);
     }
 
@@ -48,10 +44,10 @@ class ServiceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreServiceRequest  $request
+     * @param  \App\Http\Requests\StoreStatisticRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreServiceRequest $request)
+    public function store(StoreStatisticRequest $request)
     {
         //
     }
@@ -59,10 +55,10 @@ class ServiceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Service  $service
+     * @param  \App\Models\Statistic  $statistic
      * @return \Illuminate\Http\Response
      */
-    public function show(Service $service)
+    public function show(Statistic $statistic)
     {
         //
     }
@@ -70,10 +66,10 @@ class ServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Service  $service
+     * @param  \App\Models\Statistic  $statistic
      * @return \Illuminate\Http\Response
      */
-    public function edit(Service $service)
+    public function edit(Statistic $statistic)
     {
         //
     }
@@ -81,11 +77,11 @@ class ServiceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateServiceRequest  $request
-     * @param  \App\Models\Service  $service
+     * @param  \App\Http\Requests\UpdateStatisticRequest  $request
+     * @param  \App\Models\Statistic  $statistic
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateServiceRequest $request, Service $service)
+    public function update(UpdateStatisticRequest $request, Statistic $statistic)
     {
         //
     }
@@ -93,10 +89,10 @@ class ServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Service  $service
+     * @param  \App\Models\Statistic  $statistic
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function destroy(Statistic $statistic)
     {
         //
     }

@@ -14,16 +14,20 @@ class CreateDetailsTable extends Migration
     public function up()
     {
         Schema::create('details', function (Blueprint $table) {
-            $table->id();            
+            $table->id();
             $table->text('details');
-            $table->string('email');
+            $table->string('phone_1');
+            $table->string('phone_2');
+            $table->string('phone_3');
+            $table->string('email_1');
+            $table->string('email_2');
+            $table->string('email_3');
             $table->string('address');
             $table->string('facebook');
             $table->string('linkedin');
             $table->string('twitter');
             $table->string('youtube');
             $table->string('instagram');
-            $table->string('email2');
             $table->timestamps();
         });
     }
