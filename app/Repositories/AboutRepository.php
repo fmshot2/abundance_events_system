@@ -31,9 +31,4 @@ class AboutRepository implements AboutRepositoryInterface
     {
         return About::whereId($aboutId)->update($newDetails);
     }
-
-    // public function getFulfilledOrders()
-    // {
-    //     return Order::where('is_fulfilled', true);
-    // }
 }

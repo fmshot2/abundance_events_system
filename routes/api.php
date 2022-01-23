@@ -10,6 +10,8 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\StatisticController;
 
+use App\Http\Controllers\AuthController;
+
 
 
 
@@ -29,6 +31,9 @@ use App\Http\Controllers\StatisticController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'authenticate']);
 
 Route::get('about', [AboutController::class, 'index']);
 Route::get('about/{id}', [AboutController::class, 'show']);
@@ -54,8 +59,9 @@ Route::get('service', [ServiceController::class, 'index']);
 
 Route::get('system_config', [DetailController::class, 'index']);
 
-
-
-
-
 Route::get('statistic', [StatisticController::class, 'index']);
+
+Route::group(['middleware' => ['jwt.verify']], function() {
+    // Route::get('user', 'UserController@getAuthenticatedUser');
+    // Route::get('closed', 'DataController@closed');
+});

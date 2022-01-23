@@ -21,11 +21,9 @@ class AboutController extends Controller
         $this->aboutRepository = $aboutRepository;
     }
 
-    public function index(): JsonResponse
+    public function index()
     {
-        return response()->json([
-            'data' => $this->aboutRepository->getAllAbouts()
-        ]);
+        return $this->aboutRepository->getAllAbouts();
     }
 
     public function store(Request $request): JsonResponse
