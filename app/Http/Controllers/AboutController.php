@@ -26,6 +26,11 @@ class AboutController extends Controller
         return $this->aboutRepository->getAllAbouts();
     }
 
+    // public function index(){
+    //     $footballers = Footballer::get()->toJson(JSON_PRETTY_PRINT);
+    //     return response($footballers, 200);
+    // }
+
     public function store(Request $request): JsonResponse
     {
         $aboutDetails = $request->only([
