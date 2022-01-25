@@ -70,13 +70,13 @@ class EventController extends Controller
     public function showUpcomingEvent()
     {
         $event = Event::whereDate('date', '>', Carbon::now());
-        return  $this->eventRepository->getUpcomingEvent();
+        return  $this->eventRepository->getUpcomingEvent($event);
     }
 
     public function showPreviousEvent()
     {
         $event = Event::whereDate('date', '<', Carbon::now());
-        return $this->eventRepository->getPreviousEvent();
+        return $this->eventRepository->getPreviousEvent($event);
     }
 
     /**
