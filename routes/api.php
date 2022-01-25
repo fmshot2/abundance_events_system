@@ -44,6 +44,8 @@ Route::delete('about/{id}', [AboutController::class, 'delete']);
 
 Route::get('event', [EventController::class, 'index']);
 Route::get('event/{id}', [EventController::class, 'show']);
+Route::get('upcomingevent', [EventController::class, 'showUpcomingEvent']);
+Route::get('previousevent', [EventController::class, 'showPreviousEvent']);
 // Route::post('about', [AboutController::class, 'store']);
 // Route::put('about/{id}', [AboutController::class, 'update']);
 // Route::delete('about/{id}', [AboutController::class, 'delete']);

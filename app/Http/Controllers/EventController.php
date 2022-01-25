@@ -10,6 +10,8 @@ use App\Interfaces\EventRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Carbon\Carbon;
+
 
 class EventController extends Controller
 {
@@ -27,9 +29,7 @@ class EventController extends Controller
      */
     public function index(): JsonResponse
     {
-        return response()->json([
-            'event' => $this->eventRepository->getAllEvents()
-        ]);
+        return $this->eventRepository->getAllEvents();
     }
 
     /**
@@ -64,9 +64,19 @@ class EventController extends Controller
     public function show(Request $request)
     {
         $eventId = $request->route('id');
-        return response()->json([
-            'event' => $this->eventRepository->getEventById($eventId)
-        ]);
+        return $this->eventRepository->getEventById($eventId);
+    }
+
+    public function showUpcomingEvent()
+    {
+        $event = Event::whereDate('date', '>', Carbon::now());
+        return  $this->eventRepository->getUpcomingEvent();
+    }
+
+    public function showPreviousEvent()
+    {
+        $event = Event::whereDate('date', '<', Carbon::now());
+        return $this->eventRepository->getPreviousEvent();
     }
 
     /**
