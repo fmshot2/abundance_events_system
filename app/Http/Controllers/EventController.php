@@ -61,7 +61,7 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
+    public function show(Request $request)
     {
         $eventId = $request->route('id');
         return response()->json([
