@@ -63,7 +63,10 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        //
+        $eventId = $request->route('id');
+        return response()->json([
+            'event' => $this->eventRepository->getEventById($eventId)
+        ]);
     }
 
     /**
