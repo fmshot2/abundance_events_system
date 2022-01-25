@@ -10,8 +10,6 @@ use App\Interfaces\EventRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Carbon\Carbon;
-
 
 class EventController extends Controller
 {
