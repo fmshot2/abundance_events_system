@@ -32,6 +32,16 @@ class EventRepository implements EventRepositoryInterface
         return Event::whereId($eventId)->update($newDetails);
     }
 
+    public function getUpcomingEvent()
+    {
+        return Event::whereDate('date', '>', Carbon::now());
+    }
+
+    public function getPreviousEvent()
+    {
+        return Event::whereDate('date', '<', Carbon::now());
+    }
+
     // public function getFulfilledOrders()
     // {
     //     return Order::where('is_fulfilled', true);

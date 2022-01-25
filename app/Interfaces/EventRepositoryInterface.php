@@ -9,7 +9,7 @@ interface EventRepositoryInterface
     public function deleteEvent($eventId);
     public function createEvent(array $eventDetails);
     public function updateEvent($eventId, array $newDetails);
-    public function getUpcomingEvent($event);
-    public function getPreviousEvent($event);
+    public function getUpcomingEvent();
+    public function getPreviousEvent();
     // public function getFulfilledOrders();
 }
