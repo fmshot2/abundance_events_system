@@ -38,22 +38,21 @@ class AboutController extends Controller
             'details'
         ]);
 
-        return response()->json(
-            [
-                'data' => $this->aboutRepository->createAbout($aboutDetails)
-            ],
-            Response::HTTP_CREATED
-        );
+        return  $this->aboutRepository->createAbout($aboutDetails);
+
+        // return response()->json(
+        //     [
+        //         'data' => $this->aboutRepository->createAbout($aboutDetails)
+        //     ],
+        //     Response::HTTP_CREATED
+        // );
     }
 
     public function show(Request $request): JsonResponse
     {
         $aboutId = $request->route('id');
 
-
-        return response()->json([
-            'data' => $this->aboutRepository->getAboutById($aboutId)
-        ]);
+        return $this->aboutRepository->getAboutById($aboutId);
     }
 
     public function update(Request $request): JsonResponse
@@ -65,9 +64,7 @@ class AboutController extends Controller
             'details'
         ]);
 
-        return response()->json([
-            'data' => $this->aboutRepository->updateAbout($aboutId, $aboutDetails)
-        ]);
+        return  $this->aboutRepository->updateAbout($aboutId, $aboutDetails);
     }
 
     public function destroy(Request $request): JsonResponse

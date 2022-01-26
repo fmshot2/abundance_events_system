@@ -29,9 +29,7 @@ class DetailController extends Controller
 
     public function index() : JsonResponse
     {
-        return response()->json([
-            'system_config' => $this->detailRepository->getAllDetails()
-        ]);
+        return $this->detailRepository->getAllDetails();
     }
 
     /**
@@ -57,12 +55,7 @@ class DetailController extends Controller
             'details'
         ]);
 
-        return response()->json(
-            [
-                'data' => $this->detailRepository->createAbout($aboutDetails)
-            ],
-            Response::HTTP_CREATED
-        );
+        return $this->detailRepository->createAbout($aboutDetails);
     }
 
     /**

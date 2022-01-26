@@ -27,12 +27,7 @@ class ContactController extends Controller
             'details'
         ]);
 
-        return response()->json(
-            [
-                'data' => $this->contactRepository->createContact($contactDetails)
-            ],
-            Response::HTTP_CREATED
-        );
+        return $this->contactRepository->createContact($contactDetails);
     }
 
     // public function show(Request $request): JsonResponse

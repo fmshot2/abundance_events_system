@@ -30,9 +30,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        return response()->json([
-            'services' => $this->serviceRepository->getAllServices()
-        ]);
+        return $this->serviceRepository->getAllServices();
     }
 
     /**
