@@ -27,9 +27,7 @@ class TestimonyController extends Controller
      */
     public function index(): JsonResponse
     {
-        return response()->json([
-            'testimony' => $this->testimonyRepository->getAllTestimonies()
-        ]);
+        return $this->testimonyRepository->getAllTestimonies();
     }
 
     /**
