@@ -25,7 +25,7 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(): JsonResponse
+    public function index()
     {
         return $this->eventRepository->getAllEvents();
     }
