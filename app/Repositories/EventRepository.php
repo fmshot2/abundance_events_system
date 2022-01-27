@@ -42,7 +42,7 @@ class EventRepository implements EventRepositoryInterface
     public function getPreviousEvent()
     {
         $previousEvents = Event::whereDate('date', '<', Carbon::now())->get();
-        foreach ($previousEvent as $previousEvents => $value) {
+        foreach ($previousEvents as $previousEvent => $value) {
             $previousEvent['date'] = Carbon::createFromFormat('d/m/Y', $dateString);
 
 //             $dateString = '25/08/2017';
