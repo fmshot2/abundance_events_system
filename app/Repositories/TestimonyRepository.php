@@ -9,6 +9,7 @@ class TestimonyRepository implements TestimonyRepositoryInterface
 {
     public function getAllTestimonies()
     {
+
         return Testimony::all();
     }
 
