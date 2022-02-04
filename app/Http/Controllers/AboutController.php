@@ -64,6 +64,7 @@ class AboutController extends Controller
             'details'
         ]);
 
+
         return  $this->aboutRepository->updateAbout($aboutId, $aboutDetails);
     }
 

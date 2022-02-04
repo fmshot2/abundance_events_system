@@ -32,7 +32,9 @@ class TestimonyController extends Controller
 
     public function index()
     {
-        return $this->testimonyRepository->getAllTestimonies();
+        $testimonies = $this->testimonyRepository->getAllTestimonies();
+        return $testimonies ? res_success('All testimonies.', $testimonies) : res_not_found('something went wrong');
+
     }
 
     /**

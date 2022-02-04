@@ -23,7 +23,7 @@ class AboutRepository implements AboutRepositoryInterface
     }
 
     // $footballer = Footballer::find($id);*/
-    
+
 
     public function getAboutById($aboutId)
     {
@@ -42,6 +42,11 @@ class AboutRepository implements AboutRepositoryInterface
 
     public function updateAbout($aboutId, array $newDetails)
     {
-        return About::whereId($aboutId)->update($newDetails);
+        $newAbout = About::whereId($aboutId)->update($newDetails);
+
+        if ($newAbout) {
+            return $newAbout;
+        }
+        return
     }
 }
