@@ -47,6 +47,6 @@ class AboutRepository implements AboutRepositoryInterface
         if ($newAbout) {
             return $newAbout;
         }
-        return
+        return false;
     }
 }

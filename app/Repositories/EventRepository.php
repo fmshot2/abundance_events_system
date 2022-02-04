@@ -31,7 +31,11 @@ class EventRepository implements EventRepositoryInterface
 
     public function updateEvent($eventId, array $newDetails)
     {
-        return Event::whereId($eventId)->update($newDetails);
+        $response =  Event::findOrFail($eventId)->update($newDetails);
+        if ($response) {
+            return Event::findOrFail($eventId);
+        }
+        return false;
     }
 
     public function getUpcomingEvent()

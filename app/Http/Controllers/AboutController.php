@@ -63,9 +63,7 @@ class AboutController extends Controller
             'title',
             'details'
         ]);
-
-
-        return  $this->aboutRepository->updateAbout($aboutId, $aboutDetails);
+        return $this->aboutRepository->updateAbout($aboutId, $aboutDetails);
     }
 
     public function destroy(Request $request)

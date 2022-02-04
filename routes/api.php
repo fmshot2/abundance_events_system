@@ -47,7 +47,7 @@ Route::get('event/{id}', [EventController::class, 'show']);
 Route::get('upcomingevents', [EventController::class, 'showUpcomingEvent']);
 Route::get('previousevents', [EventController::class, 'showPreviousEvent']);
 // Route::post('about', [AboutController::class, 'store']);
-// Route::put('about/{id}', [AboutController::class, 'update']);
+Route::put('event/{id}', [EventController::class, 'update']);
 // Route::delete('about/{id}', [AboutController::class, 'delete']);
 
 Route::get('testimony', [TestimonyController::class, 'index']);

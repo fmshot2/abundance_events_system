@@ -93,9 +93,17 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateEventRequest $request, Event $event)
+    public function update(Request $request, Event $event)
     {
-        //
+        $eventId = $request->route('id');
+
+        $eventDetails = $request->only([
+            'title',
+            'details',
+            'date'
+        ]);
+        $response = $this->eventRepository->updateEvent($eventId, $eventDetails);
+        return $response ? res_success('Updated Event.', $response) : res_not_found('something went wrong');
     }
 
     /**
