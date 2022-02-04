@@ -31,7 +31,7 @@ class AboutController extends Controller
     //     return response($footballers, 200);
     // }
 
-    public function store(Request $request): JsonResponse
+    public function store(Request $request)
     {
         $aboutDetails = $request->only([
             'title',
@@ -48,14 +48,14 @@ class AboutController extends Controller
         // );
     }
 
-    public function show(Request $request): JsonResponse
+    public function show(Request $request)
     {
         $aboutId = $request->route('id');
 
         return $this->aboutRepository->getAboutById($aboutId);
     }
 
-    public function update(Request $request): JsonResponse
+    public function update(Request $request)
     {
        $aboutId = $request->route('id');
 
@@ -67,7 +67,7 @@ class AboutController extends Controller
         return  $this->aboutRepository->updateAbout($aboutId, $aboutDetails);
     }
 
-    public function destroy(Request $request): JsonResponse
+    public function destroy(Request $request)
     {
         $aboutId = $request->route('id');
         $this->aboutRepository->deleteAbout($aboutId);
