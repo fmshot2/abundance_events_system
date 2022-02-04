@@ -25,7 +25,12 @@ class TestimonyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(): JsonResponse
+    // public function index(): JsonResponse
+    // {
+    //     return $this->testimonyRepository->getAllTestimonies();
+    // }
+
+    public function index()
     {
         return $this->testimonyRepository->getAllTestimonies();
     }
