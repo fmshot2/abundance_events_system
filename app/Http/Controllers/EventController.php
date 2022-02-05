@@ -25,11 +25,9 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(): JsonResponse
+    public function index()
     {
-        return response()->json([
-            'event' => $this->eventRepository->getAllEvents()
-        ]);
+        return $this->eventRepository->getAllEvents();
     }
 
     /**
@@ -61,9 +59,20 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
+    public function show(Request $request)
     {
-        //
+        $eventId = $request->route('id');
+        return $this->eventRepository->getEventById($eventId);
+    }
+
+    public function showUpcomingEvent()
+    {
+        return  $this->eventRepository->getUpcomingEvent();
+    }
+
+    public function showPreviousEvent()
+    {
+        return $this->eventRepository->getPreviousEvent();
     }
 
     /**
@@ -84,9 +93,17 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateEventRequest $request, Event $event)
+    public function update(Request $request, Event $event)
     {
-        //
+        $eventId = $request->route('id');
+
+        $eventDetails = $request->only([
+            'title',
+            'details',
+            'date'
+        ]);
+        $response = $this->eventRepository->updateEvent($eventId, $eventDetails);
+        return $response ? res_success('Updated Event.', $response) : res_not_found('something went wrong');
     }
 
     /**

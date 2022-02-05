@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
                 ServiceSeeder::class,
                 TestimonySeeder::class,
                 StatisticSeeder::class,
+                UserSeeder::class,
             ]
         );
 

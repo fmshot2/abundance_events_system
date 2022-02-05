@@ -25,11 +25,16 @@ class TestimonyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(): JsonResponse
+    // public function index(): JsonResponse
+    // {
+    //     return $this->testimonyRepository->getAllTestimonies();
+    // }
+
+    public function index()
     {
-        return response()->json([
-            'testimony' => $this->testimonyRepository->getAllTestimonies()
-        ]);
+        $testimonies = $this->testimonyRepository->getAllTestimonies();
+        return $testimonies ? res_success('All testimonies.', $testimonies) : res_not_found('something went wrong');
+
     }
 
     /**

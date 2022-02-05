@@ -9,6 +9,14 @@ class Event extends Model
 {
     use HasFactory;
 
+
+
+    protected $fillable = [
+        'title',
+        'details',
+        'date'
+    ];
+
     // /**
     //  * Get the listing category.
     //  */

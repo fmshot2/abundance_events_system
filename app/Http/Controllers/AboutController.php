@@ -21,39 +21,41 @@ class AboutController extends Controller
         $this->aboutRepository = $aboutRepository;
     }
 
-    public function index(): JsonResponse
+    public function index()
     {
-        return response()->json([
-            'data' => $this->aboutRepository->getAllAbouts()
-        ]);
+        return $this->aboutRepository->getAllAbouts();
     }
 
-    public function store(Request $request): JsonResponse
+    // public function index(){
+    //     $footballers = Footballer::get()->toJson(JSON_PRETTY_PRINT);
+    //     return response($footballers, 200);
+    // }
+
+    public function store(Request $request)
     {
         $aboutDetails = $request->only([
             'title',
             'details'
         ]);
 
-        return response()->json(
-            [
-                'data' => $this->aboutRepository->createAbout($aboutDetails)
-            ],
-            Response::HTTP_CREATED
-        );
+        return  $this->aboutRepository->createAbout($aboutDetails);
+
+        // return response()->json(
+        //     [
+        //         'data' => $this->aboutRepository->createAbout($aboutDetails)
+        //     ],
+        //     Response::HTTP_CREATED
+        // );
     }
 
-    public function show(Request $request): JsonResponse
+    public function show(Request $request)
     {
         $aboutId = $request->route('id');
 
-
-        return response()->json([
-            'data' => $this->aboutRepository->getAboutById($aboutId)
-        ]);
+        return $this->aboutRepository->getAboutById($aboutId);
     }
 
-    public function update(Request $request): JsonResponse
+    public function update(Request $request)
     {
        $aboutId = $request->route('id');
 
@@ -61,13 +63,10 @@ class AboutController extends Controller
             'title',
             'details'
         ]);
-
-        return response()->json([
-            'data' => $this->aboutRepository->updateAbout($aboutId, $aboutDetails)
-        ]);
+        return $this->aboutRepository->updateAbout($aboutId, $aboutDetails);
     }
 
-    public function destroy(Request $request): JsonResponse
+    public function destroy(Request $request)
     {
         $aboutId = $request->route('id');
         $this->aboutRepository->deleteAbout($aboutId);

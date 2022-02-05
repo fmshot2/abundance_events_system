@@ -9,8 +9,21 @@ class AboutRepository implements AboutRepositoryInterface
 {
     public function getAllAbouts()
     {
-        return About::first();
+        return $about = About::first();
+
+        if($about){
+            $about = $about->toJson(JSON_PRETTY_PRINT);
+            return response($about, 200);
+           }
+           else{
+               return response()->json([
+                   "message" => "About not found",
+                 ], 404);
+           }
     }
+
+    // $footballer = Footballer::find($id);*/
+
 
     public function getAboutById($aboutId)
     {
@@ -29,11 +42,11 @@ class AboutRepository implements AboutRepositoryInterface
 
     public function updateAbout($aboutId, array $newDetails)
     {
-        return About::whereId($aboutId)->update($newDetails);
-    }
+        $newAbout = About::whereId($aboutId)->update($newDetails);
 
-    // public function getFulfilledOrders()
-    // {
-    //     return Order::where('is_fulfilled', true);
-    // }
+        if ($newAbout) {
+            return $newAbout;
+        }
+        return false;
+    }
 }

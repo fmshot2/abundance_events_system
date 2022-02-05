@@ -4,6 +4,8 @@ namespace App\Repositories;
 
 use App\Interfaces\EventRepositoryInterface;
 use App\Models\Event;
+use Carbon\Carbon;
+
 
 class EventRepository implements EventRepositoryInterface
 {
@@ -29,7 +31,31 @@ class EventRepository implements EventRepositoryInterface
 
     public function updateEvent($eventId, array $newDetails)
     {
-        return Event::whereId($eventId)->update($newDetails);
+        $response =  Event::findOrFail($eventId)->update($newDetails);
+        if ($response) {
+            return Event::findOrFail($eventId);
+        }
+        return false;
+    }
+
+    public function getUpcomingEvent()
+    {
+        return Event::whereDate('date', '>', Carbon::now())->get();
+    }
+
+    public function getPreviousEvent()
+    {
+        $previousEvents = Event::whereDate('date', '<', Carbon::now())->get();
+
+//         foreach ($previousEvents as $previousEvent => $value) {
+//             $date = Carbon::parse($previousEvent['date']);
+//             $previousEvent['date'] = Carbon::createFromFormat('d/m/Y', $date);
+
+// //             $dateString = '25/08/2017';
+// // $dateObject = \Carbon::createFromFormat('d/m/Y', $dateString);
+
+//         }
+        return $previousEvents;
     }
 
     // public function getFulfilledOrders()
