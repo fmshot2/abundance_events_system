@@ -12,12 +12,6 @@ class EventRepository implements EventRepositoryInterface
     public function getAllEvents()
     {
         return Event::orderBy('id', 'ASC')->get();
-
-        // Post::orderBy('id', 'DESC')->get();
-        
-        // ->orderBy('name', 'desc')
-        // ->orderBy('email', 'asc')
-        // ->get();
     }
 
     public function getEventById($eventId)
@@ -38,14 +32,10 @@ class EventRepository implements EventRepositoryInterface
     public function updateEvent($eventId, array $newDetails)
     {
         $response =  Event::findOrFail($eventId)->update($newDetails);
-        // if ($response) {
-            return $response;
-        // }
-        // return false;
-
-        // $package = Package::find($id);
-        // $package->update($data);
-        // return $package;
+        if ($response) {
+            return Event::findOrFail($eventId);
+        }
+        return false;
     }
 
     public function getUpcomingEvent()
