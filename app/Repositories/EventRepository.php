@@ -11,7 +11,7 @@ class EventRepository implements EventRepositoryInterface
 {
     public function getAllEvents()
     {
-        return Event::orderBy('id', 'DESC')->get();
+        return Event::orderBy('id', 'ASC')->get();
 
         // Post::orderBy('id', 'DESC')->get();
         
