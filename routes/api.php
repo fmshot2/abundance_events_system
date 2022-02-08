@@ -51,17 +51,25 @@ Route::put('event/{id}', [EventController::class, 'update']);
 // Route::delete('about/{id}', [AboutController::class, 'delete']);
 
 Route::get('testimony', [TestimonyController::class, 'index']);
-// Route::get('about/{id}', [AboutController::class, 'show']);
+Route::get('testimony/{id}', [TestimonyController::class, 'show']);
 // Route::post('about', [AboutController::class, 'store']);
-// Route::put('about/{id}', [AboutController::class, 'update']);
+Route::put('testimony/{id}', [TestimonyController::class, 'update']);
 // Route::delete('about/{id}', [AboutController::class, 'delete']);
 
 Route::get('service', [ServiceController::class, 'index']);
+Route::get('service/{id}', [ServiceController::class, 'show']);
+// Route::post('service', [AboutController::class, 'store']);
+Route::put('service/{id}', [ServiceController::class, 'update']);
+// Route::delete('service/{id}', [AboutController::class, 'delete']);
 
 
 Route::get('system_config', [DetailController::class, 'index']);
 
 Route::get('statistic', [StatisticController::class, 'index']);
+Route::get('statistic/{id}', [StatisticController::class, 'show']);
+// Route::post('statistic', [StatisticController::class, 'store']);
+Route::put('statistic/{id}', [StatisticController::class, 'update']);
+// Route::delete('statistic/{id}', [StatisticController::class, 'delete']);
 
 Route::group(['middleware' => ['jwt.verify']], function() {
     // Route::get('user', 'UserController@getAuthenticatedUser');

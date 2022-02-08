@@ -6,4 +6,7 @@ interface StatsRepositoryInterface
 {
     public function getAllStats();
     public function getStatById($statId);
+    public function deleteStatistic($StatisticId);
+    public function createStatistic(array $StatisticDetails);
+    public function updateStatistic($StatisticId, array $newDetails);
 }

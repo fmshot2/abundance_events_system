@@ -87,9 +87,18 @@ class TestimonyController extends Controller
      * @param  \App\Models\Testimony  $testimony
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTestimonyRequest $request, Testimony $testimony)
+    public function update(Request $request, Testimony $testimony)
     {
-        //
+        $testimonyId = $request->route('id');
+
+        $testimonyDetails = $request->only([
+            'name',
+            'details',
+            'profession',
+            'rating'
+    ]);
+        $response = $this->testimonyRepository->updateTestimony($testimonyId, $testimonyDetails);
+        return $response ? res_success('Updated $testimony', $response) : res_not_found('something went wrong');
     }
 
     /**

@@ -42,11 +42,8 @@ class AboutRepository implements AboutRepositoryInterface
 
     public function updateAbout($aboutId, array $newDetails)
     {
-        $newAbout = About::whereId($aboutId)->update($newDetails);
-
-        if ($newAbout) {
-            return $newAbout;
-        }
-        return false;
+       $response =  About::findOrFail($aboutId)
+        $response->update($newDetails);
+        return $response;
     }
 }

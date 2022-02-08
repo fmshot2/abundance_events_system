@@ -15,10 +15,10 @@ class CreateTestimoniesTable extends Migration
     {
         Schema::create('testimonies', function (Blueprint $table) {
             $table->id();
-            $table->text('details');
-            $table->string('name');
-            $table->string('profession');
-            $table->string('rating');
+            $table->text('details')->nullable();
+            $table->string('name')->nullable();
+            $table->string('profession')->nullable();
+            $table->string('rating')->nullable();
             $table->timestamps();
         });
     }

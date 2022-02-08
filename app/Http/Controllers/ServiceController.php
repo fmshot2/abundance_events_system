@@ -83,9 +83,16 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateServiceRequest $request, Service $service)
+    public function update(Request $request, Service $service)
     {
-        //
+        $serviceId = $request->route('id');
+
+        $serviceDetails = $request->only([
+            'title',
+            'details'
+    ]);
+        $response = $this->serviceRepository->updateService($serviceId, $serviceDetails);
+        return $response ? res_success('Updated service', $response) : res_not_found('something went wrong');
     }
 
     /**

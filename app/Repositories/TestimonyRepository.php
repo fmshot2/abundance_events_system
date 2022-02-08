@@ -30,7 +30,9 @@ class TestimonyRepository implements TestimonyRepositoryInterface
 
     public function updateTestimony($testimonyId, array $newDetails)
     {
-        return Testimony::whereId($aboutId)->update($newDetails);
+        $response =  Testimony::findOrFail($aboutId)
+        $response->update($newDetails);
+        return $response;
     }
 
     // public function getFulfilledOrders()

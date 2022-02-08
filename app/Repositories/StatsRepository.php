@@ -16,4 +16,11 @@ class StatsRepository implements StatsRepositoryInterface
     {
         return Statistic::findOrFail($statId);
     }
+
+    public function updateStatistic($statisticId, array $newDetails)
+    {
+        $response =  Service::findOrFail($statisticId)
+        $response->update($newDetails);
+        return $response;
+    }
 }
