@@ -33,7 +33,7 @@ class EventRepository implements EventRepositoryInterface
     {
         $response =  Event::findOrFail($eventId)->update($newDetails);
         if ($response) {
-            return Event::findOrFail($eventId);
+            return $response;
         }
         return false;
     }
