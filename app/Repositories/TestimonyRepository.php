@@ -30,7 +30,7 @@ class TestimonyRepository implements TestimonyRepositoryInterface
 
     public function updateTestimony($testimonyId, array $newDetails)
     {
-        $response =  Testimony::findOrFail($aboutId)
+        $response =  Testimony::findOrFail($testimonyId);
         $response->update($newDetails);
         return $response;
     }

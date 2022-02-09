@@ -29,7 +29,7 @@ class ServiceRepository implements ServiceRepositoryInterface
 
     public function updateService($serviceId, array $newDetails)
     {
-        $response =  Service::findOrFail($serviceId)
+        $response =  Service::findOrFail($serviceId);
         $response->update($newDetails);
         return $response;
     }
