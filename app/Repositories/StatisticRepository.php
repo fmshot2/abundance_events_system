@@ -12,7 +12,7 @@ class StatisticRepository implements StatisticRepositoryInterface
 
     public function getAllStatistics()
     {
-        return Statistic::first();
+        return Statistic::all();
     }
 
     public function getStatisticById($statisticsId)
