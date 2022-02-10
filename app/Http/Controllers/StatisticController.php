@@ -56,9 +56,10 @@ class StatisticController extends Controller
      * @param  \App\Models\Statistic  $statistic
      * @return \Illuminate\Http\Response
      */
-    public function show(Statistic $statistic)
+    public function show(Request $request)
     {
-        //
+        $statisticId = $request->route('id');
+        return $this->statsRepository->getStatById($statisticId);
     }
 
     /**
