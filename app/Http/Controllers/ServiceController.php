@@ -60,9 +60,10 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function show(Service $service)
+    public function show(Request $request)
     {
-        //
+        $serviceId = $request->route('id');
+        return $this->serviceRepository->getServiceById($serviceId);
     }
 
     /**
