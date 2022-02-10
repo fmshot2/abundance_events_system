@@ -15,17 +15,17 @@ class TestimonyRepository implements TestimonyRepositoryInterface
 
     public function getTestimonyById($testimonyId)
     {
-        return Testimony::findOrFail($aboutId);
+        return Testimony::findOrFail($testimonyId);
     }
 
     public function deleteTestimony($testimonyId)
     {
-        Testimony::destroy($aboutId);
+        Testimony::destroy($testimonyId);
     }
 
     public function createTestimony(array $testimonyDetails)
     {
-        return Testimony::create($aboutDetails);
+        return Testimony::create($testimonyDetails);
     }
 
     public function updateTestimony($testimonyId, array $newDetails)
