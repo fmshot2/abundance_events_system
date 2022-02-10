@@ -64,9 +64,10 @@ class TestimonyController extends Controller
      * @param  \App\Models\Testimony  $testimony
      * @return \Illuminate\Http\Response
      */
-    public function show(Testimony $testimony)
+    public function show(Request $request)
     {
-        //
+        $testimonyId = $request->route('id');
+        return $this->testimonyRepository->getTestimonyById($testimonyId);
     }
 
     /**
