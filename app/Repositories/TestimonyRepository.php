@@ -10,7 +10,7 @@ class TestimonyRepository implements TestimonyRepositoryInterface
     public function getAllTestimonies()
     {
 
-        return Testimony::all();
+        return Testimony::orderBy('id', 'ASC')->get();
     }
 
     public function getTestimonyById($testimonyId)

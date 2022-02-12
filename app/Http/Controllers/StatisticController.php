@@ -82,7 +82,7 @@ class StatisticController extends Controller
      */
     public function update(Request $request, Statistic $statistic)
     {
-        $statisticId = $request->route('id');
+       return $statisticId = $request->route('id');
 
         $statisticDetails = $request->only([
             'title',

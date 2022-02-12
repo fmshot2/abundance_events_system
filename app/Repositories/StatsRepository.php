@@ -9,7 +9,7 @@ class StatsRepository implements StatsRepositoryInterface
 {
     public function getAllStats()
     {
-        return Statistic::all();
+        return Statistic::orderBy('id', 'ASC')->get();
     }
 
     public function getStatById($statId)

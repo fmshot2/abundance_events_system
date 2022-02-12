@@ -9,7 +9,7 @@ class ServiceRepository implements ServiceRepositoryInterface
 {
     public function getAllServices()
     {
-        return Service::all();
+        return Service::orderBy('id', 'ASC')->get();
     }
 
     public function getServiceById($serviceId)
