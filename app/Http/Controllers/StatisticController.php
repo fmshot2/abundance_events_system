@@ -88,7 +88,7 @@ class StatisticController extends Controller
             'title',
             'details'
     ]);
-        $response = $this->statisticRepository->updateStatistic($statisticId, $statisticDetails);
+        $response = $this->statsRepository->updateStatistic($statisticId, $statisticDetails);
         return $response ? res_success('Updated statistic', $response) : res_not_found('something went wrong');
     }
 
