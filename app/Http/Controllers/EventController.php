@@ -112,8 +112,10 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Event $event)
+    public function delete(Event $event, Request $request)
     {
-        //
+        $eventId = $request->route('id');
+        $response = $this->eventRepository->deleteEvent($eventId);
+        return $response ? res_completed('Event of Id ' . $eventId . ' Deleted successfully') : res_not_found('something went wrong');
     }
 }

@@ -23,4 +23,10 @@ class StatsRepository implements StatsRepositoryInterface
         $response->update($newDetails);
         return $response;
     }
+
+    public function deleteStatistic(String $statisticId) {
+        $response = Statistic::findOrFail($statisticId);
+        $response->delete();
+        return $response;
+    }
 }

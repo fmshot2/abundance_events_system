@@ -108,8 +108,10 @@ class TestimonyController extends Controller
      * @param  \App\Models\Testimony  $testimony
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Testimony $testimony)
+    public function delete(Testimony $testimony, Request $request)
     {
-        //
+            $testimonyId = $request->route('id');
+            $response = $this->testimonyRepository->deleteTestimony($testimonyId);
+            return $response ? res_completed('Testimony of Id ' . $testimonyId . ' Deleted successfully') : res_not_found('something went wrong');
     }
 }

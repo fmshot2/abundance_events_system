@@ -20,7 +20,10 @@ class TestimonyRepository implements TestimonyRepositoryInterface
 
     public function deleteTestimony($testimonyId)
     {
-        Testimony::destroy($testimonyId);
+        // Testimony::destroy($testimonyId);
+        $response = Testimony::findOrFail($testimonyId);
+        $response->delete();
+        return $response;
     }
 
     public function createTestimony(array $testimonyDetails)

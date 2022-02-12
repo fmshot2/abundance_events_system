@@ -16,7 +16,7 @@ class TestimonyFactory extends Factory
         return [             
             'details'       => $this->faker->sentences(4, true),
             'name'          => $this->faker->name(),
-            'profession'    => $this->faker->text(),
+            'profession'    => $this->faker->word(),
             'rating'        => $this->faker->randomDigit(),
         ];
     }

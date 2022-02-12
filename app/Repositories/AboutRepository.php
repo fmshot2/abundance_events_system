@@ -32,7 +32,11 @@ class AboutRepository implements AboutRepositoryInterface
 
     public function deleteAbout($aboutId)
     {
-        About::destroy($aboutId);
+        // About::destroy($aboutId);
+        $response = About::findOrFail($aboutId);
+        $response->delete();
+        return $response;
+
     }
 
     public function createAbout(array $aboutDetails)

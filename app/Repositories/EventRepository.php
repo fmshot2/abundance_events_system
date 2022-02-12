@@ -21,7 +21,10 @@ class EventRepository implements EventRepositoryInterface
 
     public function deleteEvent($eventId)
     {
-        Event::destroy($aboutId);
+        // Event::destroy($aboutId);
+        $response = Event::findOrFail($eventId);
+        $response->delete();
+        return $response;
     }
 
     public function createEvent(array $eventDetails)

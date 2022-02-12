@@ -98,8 +98,10 @@ class StatisticController extends Controller
      * @param  \App\Models\Statistic  $statistic
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Statistic $statistic)
+    public function delete(Statistic $statistic, Request $request)
     {
-        //
+        $statisticId = $request->route('id');
+        $response = $this->statsRepository->deleteStatistic($statisticId);
+        return $response ? res_completed('Statistic of Id ' . $statisticId . ' Deleted successfully') : res_not_found('something went wrong');
     }
 }

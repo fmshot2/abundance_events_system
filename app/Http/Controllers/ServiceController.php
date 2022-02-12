@@ -102,8 +102,10 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function delete(Service $service, Request $request)
     {
-        //
+        $serviceId = $request->route('id');
+        $response = $this->serviceRepository->deleteService($serviceId);
+        return $response ? res_completed('Service of Id ' . $serviceId . ' Deleted successfully') : res_not_found('something went wrong');
     }
 }

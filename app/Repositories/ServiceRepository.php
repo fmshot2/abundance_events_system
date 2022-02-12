@@ -19,7 +19,10 @@ class ServiceRepository implements ServiceRepositoryInterface
 
     public function deleteService($serviceId)
     {
-        Service::destroy($serviceId);
+        // Service::destroy($serviceId);
+        $response = Service::findOrFail($serviceId);
+        $response->delete();
+        return $response;
     }
 
     public function createService(array $serviceDetails)

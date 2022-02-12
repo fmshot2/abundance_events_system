@@ -66,11 +66,12 @@ class AboutController extends Controller
         return $this->aboutRepository->updateAbout($aboutId, $aboutDetails);
     }
 
-    public function destroy(Request $request)
+    public function delete(Request $request)
     {
         $aboutId = $request->route('id');
-        $this->aboutRepository->deleteAbout($aboutId);
+        $response = $this->aboutRepository->deleteAbout($aboutId);
+        return $response ? res_completed('About of Id ' . $aboutId . ' Deleted successfully') : res_not_found('something went wrong');
 
-        return response()->json(null, Response::HTTP_NO_CONTENT);
+        // return response()->json(null, Response::HTTP_NO_CONTENT);
     }
 }
