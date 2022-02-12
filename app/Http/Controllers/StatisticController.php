@@ -82,11 +82,11 @@ class StatisticController extends Controller
      */
     public function update(Request $request, Statistic $statistic)
     {
-       return $statisticId = $request->route('id');
+        $statisticId = $request->route('id');
 
         $statisticDetails = $request->only([
             'title',
-            'details'
+            'value'
     ]);
         $response = $this->statsRepository->updateStatistic($statisticId, $statisticDetails);
         return $response ? res_success('Updated statistic', $response) : res_not_found('something went wrong');
