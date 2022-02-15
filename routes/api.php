@@ -64,6 +64,10 @@ Route::delete('service/{id}', [ServiceController::class, 'delete']);
 
 
 Route::get('system_config', [DetailController::class, 'index']);
+Route::post('system_config', [DetailController::class, 'store']);
+Route::put('system_config/{id}', [DetailController::class, 'update']);
+
+
 
 Route::get('statistic', [StatisticController::class, 'index']);
 Route::get('statistic/{id}', [StatisticController::class, 'show']);

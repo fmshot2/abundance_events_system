@@ -82,10 +82,16 @@ class DetailController extends Controller
      * @param  \App\Models\Detail  $detail
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDetailRequest $request, Detail $detail)
+    public function update(UpdateDetailRequest $request)
     {
-        //
-    }
+        $detailId = $request->route('id');
+
+        //Retrieve the validate user input
+        $validated_data = $request->validated();
+
+       $response = $this->detailRepository->updateDetail($detailId, $validated_data);
+       return $response ? res_success('Updated System config Successfully.', $response) : res_not_found('something went wrong');
+   }
 
     /**
      * Remove the specified resource from storage.
