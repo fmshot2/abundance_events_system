@@ -15,19 +15,19 @@ class CreateDetailsTable extends Migration
     {
         Schema::create('details', function (Blueprint $table) {
             $table->id();
-            $table->text('details');
-            $table->string('phone_1');
-            $table->string('phone_2');
-            $table->string('phone_3');
-            $table->string('email_1');
-            $table->string('email_2');
-            $table->string('email_3');
-            $table->string('address');
-            $table->string('facebook');
-            $table->string('linkedin');
-            $table->string('twitter');
-            $table->string('youtube');
-            $table->string('instagram');
+            $table->text('details')->nullable();
+            $table->string('phone_1')->nullable();
+            $table->string('phone_2')->nullable();
+            $table->string('phone_3')->nullable();
+            $table->string('email_1')->nullable();
+            $table->string('email_2')->nullable();
+            $table->string('email_3')->nullable();
+            $table->string('address')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('youtube')->nullable();
+            $table->string('instagram')->nullable();
             $table->timestamps();
         });
     }

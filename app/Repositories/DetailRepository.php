@@ -9,15 +9,24 @@ class DetailRepository implements DetailRepositoryInterface
 {
     public function getAllDetails()
     {
-        return Detail::first();
+        $detail = Detail::first();
+       // if a record was found
+       if ($detail) {
+
+        return $detail;
+
+       } else { 
+           #if no record was found
+           return false;
+       }
     }
 
-    public function getDetailById($detailId)
+    public function getDetailById(String $detailId)
     {
         return Order::findOrFail($detailId);
     }
 
-    public function deleteDetail($detailId)
+    public function deleteDetail(String $detailId)
     {
         Order::destroy($detailId);
     }
@@ -27,7 +36,7 @@ class DetailRepository implements DetailRepositoryInterface
         return Order::create($aboutDetails);
     }
 
-    public function updateDetail($detailId, array $newDetails)
+    public function updateDetail(String $detailId, array $newDetails)
     {
         return Order::whereId($detailId)->update($newDetails);
     }

@@ -9,21 +9,17 @@ class AboutRepository implements AboutRepositoryInterface
 {
     public function getAllAbouts()
     {
-        return $about = About::first();
+       $about = About::first();
 
-        if($about){
-            $about = $about->toJson(JSON_PRETTY_PRINT);
-            return response($about, 200);
-           }
-           else{
-               return response()->json([
-                   "message" => "About not found",
-                 ], 404);
-           }
-    }
+       // if a record was found
+       if ($about) {
 
-    // $footballer = Footballer::find($id);*/
-
+        return $about;
+       } else { 
+           #if no record was found
+           return false;
+       }
+   }
 
     public function getAboutById($aboutId)
     {

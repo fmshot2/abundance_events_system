@@ -46,7 +46,7 @@ Route::get('event', [EventController::class, 'index']);
 Route::get('event/{id}', [EventController::class, 'show']);
 Route::get('upcomingevents', [EventController::class, 'showUpcomingEvent']);
 Route::get('previousevents', [EventController::class, 'showPreviousEvent']);
-// Route::post('about', [AboutController::class, 'store']);
+Route::post('event', [EventController::class, 'store']);
 Route::put('event/{id}', [EventController::class, 'update']);
 Route::delete('event/{id}', [EventController::class, 'delete']);
 
@@ -67,7 +67,7 @@ Route::get('system_config', [DetailController::class, 'index']);
 
 Route::get('statistic', [StatisticController::class, 'index']);
 Route::get('statistic/{id}', [StatisticController::class, 'show']);
-// Route::post('statistic', [StatisticController::class, 'store']);
+Route::post('statistic', [StatisticController::class, 'store']);
 Route::put('statistic/{id}', [StatisticController::class, 'update']);
 Route::delete('statistic/{id}', [StatisticController::class, 'delete']);
 

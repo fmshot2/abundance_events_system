@@ -47,7 +47,11 @@ class StatisticController extends Controller
      */
     public function store(StoreStatisticRequest $request)
     {
-        //
+        $validated_data = $request->validated();
+
+        $response = $this->statsRepository->createStatistic($validated_data);
+        return $response ? res_success('Statistic Posted Successfully', $response) : res_not_found('something went wrong');
+
     }
 
     /**

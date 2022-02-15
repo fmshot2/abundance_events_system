@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
                 TestimonySeeder::class,
                 StatisticSeeder::class,
                 UserSeeder::class,
+                ContactSeeder::class,
             ]
         );
 
