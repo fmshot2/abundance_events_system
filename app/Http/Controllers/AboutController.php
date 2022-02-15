@@ -54,8 +54,6 @@ class AboutController extends Controller
 
        $validated_data = $request->validated();
 
-        $response = $this->eventRepository->updateEvent($eventId, $validated_data);
-
         $response = $this->aboutRepository->updateAbout($aboutId, $validated_data);
         return $response ? res_success('Updated About Successfully.', $response) : res_not_found('something went wrong');
 
