@@ -10,10 +10,8 @@ class ServiceRepository implements ServiceRepositoryInterface
     public function getAllServices()
     {
         $service = Service::orderBy('id', 'ASC')->get();
-        // return $service;
        // if a record was found
        if ($service) {
-
         return $service;
        } else {
            #if no record was found
