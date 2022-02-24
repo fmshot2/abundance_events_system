@@ -51,7 +51,10 @@ class ServiceController extends Controller
      */
     public function store(StoreServiceRequest $request)
     {
-        //
+        $validated_data = $request->validated();
+
+        $response = $this->serviceRepository->createService($validated_data);
+        return $response ? res_success('Service Posted Successfully', $response) : res_not_found('something went wrong');
     }
 
     /**

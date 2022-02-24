@@ -52,13 +52,13 @@ Route::delete('event/{id}', [EventController::class, 'delete']);
 
 Route::get('testimony', [TestimonyController::class, 'index']);
 Route::get('testimony/{id}', [TestimonyController::class, 'show']);
-// Route::post('about', [AboutController::class, 'store']);
+Route::post('testimony', [TestimonyController::class, 'store']);
 Route::put('testimony/{id}', [TestimonyController::class, 'update']);
 Route::delete('testimony/{id}', [TestimonyController::class, 'delete']);
 
 Route::get('service', [ServiceController::class, 'index']);
 Route::get('service/{id}', [ServiceController::class, 'show']);
-// Route::post('service', [AboutController::class, 'store']);
+Route::post('service', [ServiceController::class, 'store']);
 Route::put('service/{id}', [ServiceController::class, 'update']);
 Route::delete('service/{id}', [ServiceController::class, 'delete']);
 

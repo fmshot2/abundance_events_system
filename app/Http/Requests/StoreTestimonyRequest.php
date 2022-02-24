@@ -24,7 +24,10 @@ class StoreTestimonyRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'            => ['required', 'max:255', 'string'],
+            'details'         => ['required', 'string'],
+            'profession'      => ['nullable', 'string'],
+            'rating'          => ['nullable', 'integer'],
         ];
     }
 }

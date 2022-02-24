@@ -55,7 +55,10 @@ class TestimonyController extends Controller
      */
     public function store(StoreTestimonyRequest $request)
     {
-        //
+        $validated_data = $request->validated();
+
+        $response = $this->testimonyRepository->createTestimony($validated_data);
+        return $response ? res_success('Testimony Posted Successfully', $response) : res_not_found('something went wrong');
     }
 
     /**
