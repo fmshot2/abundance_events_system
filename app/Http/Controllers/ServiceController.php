@@ -51,10 +51,16 @@ class ServiceController extends Controller
      */
     public function store(StoreServiceRequest $request)
     {
+        if($this->serviceRepository->getAllServices()->count() < 4)
+        {
+
         $validated_data = $request->validated();
 
         $response = $this->serviceRepository->createService($validated_data);
         return $response ? res_success('Service Posted Successfully', $response) : res_not_found('something went wrong');
+        }
+        return res_bad_request('You already have four services, you need to delete one before posting a new one');
+
     }
 
     /**
