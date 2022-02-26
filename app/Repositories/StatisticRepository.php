@@ -12,7 +12,7 @@ class StatisticRepository implements StatisticRepositoryInterface
 
     public function getAllStatistics()
     {
-        return Statistic::first();
+        return Statistic::orderBy('id', 'ASC')->get();
     }
 
     public function getStatisticById($statisticsId)
@@ -20,4 +20,11 @@ class StatisticRepository implements StatisticRepositoryInterface
         return Service::findOrFail($statisticsId);
     }
 
-}
+    public function updateStatistic($statisticId, array $newDetails)
+    {
+        $response =  Service::findOrFail($statisticId);
+        $response->update($newDetails);
+        return $response;
+    }
+
+}s

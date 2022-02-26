@@ -10,6 +10,8 @@ use App\Interfaces\EventRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Carbon\Carbon;
+
 
 class EventController extends Controller
 {
@@ -30,17 +32,6 @@ class EventController extends Controller
         return $this->eventRepository->getAllEvents();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        // //details');
-        // $table->string('title');
-        // $table->dateTime('date
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -50,7 +41,14 @@ class EventController extends Controller
      */
     public function store(StoreEventRequest $request)
     {
-        //
+         //Request Validated data
+         $validated_data = $request->validated();
+         $validated_data['date'] = Carbon::parse($validated_data['date'])->format('Y-m-d');
+
+ 
+         $response = $this->eventRepository->createEvent($validated_data);
+         return $response ? res_success('Event Posted Successfully', $response) : res_not_found('something went wrong');
+
     }
 
     /**
@@ -75,16 +73,6 @@ class EventController extends Controller
         return $this->eventRepository->getPreviousEvent();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Event  $event
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Event $event)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -93,16 +81,20 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(UpdateEventRequest $request)
     {
         $eventId = $request->route('id');
 
-        $eventDetails = $request->only([
-            'title',
-            'details',
-            'date'
-        ]);
-        $response = $this->eventRepository->updateEvent($eventId, $eventDetails);
+         //Retrieve the validate user input
+         $validated_data = $request->validated();
+
+        // $eventDetails = $request->only([
+        //     'title',
+        //     'details',
+        //     'date'
+        // ]);
+
+        $response = $this->eventRepository->updateEvent($eventId, $validated_data);
         return $response ? res_success('Updated Event.', $response) : res_not_found('something went wrong');
     }
 
@@ -112,8 +104,12 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Event $event)
+    public function delete(Event $event, Request $request)
     {
-        //
+        $eventId = $request->route('id');
+
+        $response = $this->eventRepository->deleteEvent($eventId);
+        
+        return $response ? res_completed('Event of Id ' . $eventId . ' Deleted successfully') : res_not_found('something went wrong');
     }
 }

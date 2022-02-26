@@ -27,19 +27,9 @@ class DetailController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index() : JsonResponse
+    public function index()
     {
         return $this->detailRepository->getAllDetails();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -50,12 +40,17 @@ class DetailController extends Controller
      */
     public function store(StoreDetailRequest $request)
     {
-        $details = $request->only([
-            'title',
-            'details'
-        ]);
+        if(!$this->detailRepository->getAllDetails()) {
 
-        return $this->detailRepository->createAbout($aboutDetails);
+        //Request Validated data
+        $validated_data = $request->validated();
+
+        $response = $this->detailRepository->createDetail($validated_data);
+
+        return $response ? res_success('System Config Posted Successfully', $response) : res_not_found('something went wrong');
+        }
+        return res_not_found('You Already Have System Config In DB! Update That One Instead!');
+
     }
 
     /**
@@ -87,10 +82,16 @@ class DetailController extends Controller
      * @param  \App\Models\Detail  $detail
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDetailRequest $request, Detail $detail)
+    public function update(UpdateDetailRequest $request)
     {
-        //
-    }
+        $detailId = $request->route('id');
+
+        //Retrieve the validate user input
+        $validated_data = $request->validated();
+
+       $response = $this->detailRepository->updateDetail($detailId, $validated_data);
+       return $response ? res_success('Updated System config Successfully.', $response) : res_not_found('something went wrong');
+   }
 
     /**
      * Remove the specified resource from storage.

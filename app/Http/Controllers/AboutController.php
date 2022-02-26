@@ -26,26 +26,19 @@ class AboutController extends Controller
         return $this->aboutRepository->getAllAbouts();
     }
 
-    // public function index(){
-    //     $footballers = Footballer::get()->toJson(JSON_PRETTY_PRINT);
-    //     return response($footballers, 200);
-    // }
-
-    public function store(Request $request)
+    public function store(StoreAboutRequest $request)
     {
-        $aboutDetails = $request->only([
-            'title',
-            'details'
-        ]);
+        if(!$this->aboutRepository->getAllAbouts()) 
+        {
 
-        return  $this->aboutRepository->createAbout($aboutDetails);
+        //Request Validated data
+        $validated_data = $request->validated();
 
-        // return response()->json(
-        //     [
-        //         'data' => $this->aboutRepository->createAbout($aboutDetails)
-        //     ],
-        //     Response::HTTP_CREATED
-        // );
+        $response = $this->aboutRepository->createAbout($validated_data);
+
+        return $response ? res_success('About Posted Successfully', $response) : res_not_found('something went wrong');
+        }
+        return res_not_found('You Already Have About In DB! Update That One Instead!');
     }
 
     public function show(Request $request)
@@ -55,22 +48,23 @@ class AboutController extends Controller
         return $this->aboutRepository->getAboutById($aboutId);
     }
 
-    public function update(Request $request)
+    public function update(UpdateAboutRequest $request)
     {
        $aboutId = $request->route('id');
 
-        $aboutDetails = $request->only([
-            'title',
-            'details'
-        ]);
-        return $this->aboutRepository->updateAbout($aboutId, $aboutDetails);
+       $validated_data = $request->validated();
+
+        $response = $this->aboutRepository->updateAbout($aboutId, $validated_data);
+        return $response ? res_success('Updated About Successfully.', $response) : res_not_found('something went wrong');
+
     }
 
-    public function destroy(Request $request)
+    public function delete(Request $request)
     {
         $aboutId = $request->route('id');
-        $this->aboutRepository->deleteAbout($aboutId);
+        $response = $this->aboutRepository->deleteAbout($aboutId);
+        return $response ? res_completed('About of Id ' . $aboutId . ' Deleted successfully') : res_not_found('something went wrong');
 
-        return response()->json(null, Response::HTTP_NO_CONTENT);
+        // return response()->json(null, Response::HTTP_NO_CONTENT);
     }
 }

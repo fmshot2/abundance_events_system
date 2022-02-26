@@ -11,7 +11,7 @@ class EventRepository implements EventRepositoryInterface
 {
     public function getAllEvents()
     {
-        return Event::all();
+        return Event::orderBy('id', 'ASC')->get();
     }
 
     public function getEventById($eventId)
@@ -21,7 +21,10 @@ class EventRepository implements EventRepositoryInterface
 
     public function deleteEvent($eventId)
     {
-        Event::destroy($aboutId);
+        // Event::destroy($aboutId);
+        $response = Event::findOrFail($eventId);
+        $response->delete();
+        return $response;
     }
 
     public function createEvent(array $eventDetails)
@@ -31,11 +34,11 @@ class EventRepository implements EventRepositoryInterface
 
     public function updateEvent($eventId, array $newDetails)
     {
-        $response =  Event::findOrFail($eventId)->update($newDetails);
-        if ($response) {
-            return Event::findOrFail($eventId);
-        }
-        return false;
+        $response =  Event::findOrFail($eventId);
+
+        $response->update($newDetails);
+        
+        return $response;
     }
 
     public function getUpcomingEvent()

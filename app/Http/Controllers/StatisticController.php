@@ -47,7 +47,11 @@ class StatisticController extends Controller
      */
     public function store(StoreStatisticRequest $request)
     {
-        //
+        $validated_data = $request->validated();
+
+        $response = $this->statsRepository->createStatistic($validated_data);
+        return $response ? res_success('Statistic Posted Successfully', $response) : res_not_found('something went wrong');
+
     }
 
     /**
@@ -56,9 +60,10 @@ class StatisticController extends Controller
      * @param  \App\Models\Statistic  $statistic
      * @return \Illuminate\Http\Response
      */
-    public function show(Statistic $statistic)
+    public function show(Request $request)
     {
-        //
+        $statisticId = $request->route('id');
+        return $this->statsRepository->getStatById($statisticId);
     }
 
     /**
@@ -79,9 +84,16 @@ class StatisticController extends Controller
      * @param  \App\Models\Statistic  $statistic
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateStatisticRequest $request, Statistic $statistic)
+    public function update(Request $request, Statistic $statistic)
     {
-        //
+        $statisticId = $request->route('id');
+
+        $statisticDetails = $request->only([
+            'title',
+            'value'
+    ]);
+        $response = $this->statsRepository->updateStatistic($statisticId, $statisticDetails);
+        return $response ? res_success('Updated statistic', $response) : res_not_found('something went wrong');
     }
 
     /**
@@ -90,8 +102,10 @@ class StatisticController extends Controller
      * @param  \App\Models\Statistic  $statistic
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Statistic $statistic)
+    public function delete(Statistic $statistic, Request $request)
     {
-        //
+        $statisticId = $request->route('id');
+        $response = $this->statsRepository->deleteStatistic($statisticId);
+        return $response ? res_completed('Statistic of Id ' . $statisticId . ' Deleted successfully') : res_not_found('something went wrong');
     }
 }

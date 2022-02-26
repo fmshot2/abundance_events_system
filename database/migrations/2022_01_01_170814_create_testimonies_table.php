@@ -17,8 +17,8 @@ class CreateTestimoniesTable extends Migration
             $table->id();
             $table->text('details');
             $table->string('name');
-            $table->string('profession');
-            $table->string('rating');
+            $table->string('profession')->nullable();
+            $table->string('rating')->nullable();
             $table->timestamps();
         });
     }

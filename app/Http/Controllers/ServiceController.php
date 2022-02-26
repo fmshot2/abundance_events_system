@@ -51,7 +51,16 @@ class ServiceController extends Controller
      */
     public function store(StoreServiceRequest $request)
     {
-        //
+        if($this->serviceRepository->getAllServices()->count() < 4)
+        {
+
+        $validated_data = $request->validated();
+
+        $response = $this->serviceRepository->createService($validated_data);
+        return $response ? res_success('Service Posted Successfully', $response) : res_not_found('something went wrong');
+        }
+        return res_bad_request('You already have four services, you need to delete one before posting a new one');
+
     }
 
     /**
@@ -60,9 +69,10 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function show(Service $service)
+    public function show(Request $request)
     {
-        //
+        $serviceId = $request->route('id');
+        return $this->serviceRepository->getServiceById($serviceId);
     }
 
     /**
@@ -83,9 +93,16 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateServiceRequest $request, Service $service)
+    public function update(Request $request, Service $service)
     {
-        //
+        $serviceId = $request->route('id');
+
+        $serviceDetails = $request->only([
+            'title',
+            'details'
+    ]);
+        $response = $this->serviceRepository->updateService($serviceId, $serviceDetails);
+        return $response ? res_success('Updated service', $response) : res_not_found('something went wrong');
     }
 
     /**
@@ -94,8 +111,10 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function delete(Service $service, Request $request)
     {
-        //
+        $serviceId = $request->route('id');
+        $response = $this->serviceRepository->deleteService($serviceId);
+        return $response ? res_completed('Service of Id ' . $serviceId . ' Deleted successfully') : res_not_found('something went wrong');
     }
 }

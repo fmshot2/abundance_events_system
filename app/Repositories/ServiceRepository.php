@@ -9,7 +9,14 @@ class ServiceRepository implements ServiceRepositoryInterface
 {
     public function getAllServices()
     {
-        return Service::all();
+        $service = Service::orderBy('id', 'ASC')->get();
+       // if a record was found
+       if ($service) {
+        return $service;
+       } else {
+           #if no record was found
+           return false;
+       }
     }
 
     public function getServiceById($serviceId)
@@ -19,7 +26,10 @@ class ServiceRepository implements ServiceRepositoryInterface
 
     public function deleteService($serviceId)
     {
-        Service::destroy($serviceId);
+        // Service::destroy($serviceId);
+        $response = Service::findOrFail($serviceId);
+        $response->delete();
+        return $response;
     }
 
     public function createService(array $serviceDetails)
@@ -29,7 +39,9 @@ class ServiceRepository implements ServiceRepositoryInterface
 
     public function updateService($serviceId, array $newDetails)
     {
-        return Order::whereId($serviceId)->update($newDetails);
+        $response =  Service::findOrFail($serviceId);
+        $response->update($newDetails);
+        return $response;
     }
 
     // public function getFulfilledOrders()

@@ -13,7 +13,7 @@ class StoreDetailRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,18 @@ class StoreDetailRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'details'           => ['nullable', 'string'],
+            'phone_1'           => ['nullable', 'string', 'max: 11'],
+            'phone_2'           => ['nullable', 'string', 'max: 11'],
+            'phone_3'           => ['nullable', 'string', 'max: 11'],
+            'email_1'           => ['nullable', 'email'],
+            'email_2'           => ['nullable', 'email'],
+            'email_3'           => ['nullable', 'email'],
+            'address'           => ['nullable', 'string'],
+            'facebook'          => ['nullable', 'url'],
+            'linkedin'          => ['nullable', 'url'],
+            'youtube'           => ['nullable', 'url'],
+            'instagram'         => ['nullable', 'url']
         ];
     }
 }

@@ -22,12 +22,16 @@ class ContactController extends Controller
 
     public function store(Request $request): JsonResponse
     {
-        $aboutDetails = $request->only([
-            'title',
-            'details'
-        ]);
+        
+        //Request Validated data
+        $validated_data = $request->validated();
 
-        return $this->contactRepository->createContact($contactDetails);
+        // $aboutDetails = $request->only([
+        //     'title',
+        //     'details'
+        // ]);
+
+        return $this->contactRepository->createContact($validated_data);
     }
 
     // public function show(Request $request): JsonResponse

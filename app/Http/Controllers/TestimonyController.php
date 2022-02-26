@@ -55,7 +55,10 @@ class TestimonyController extends Controller
      */
     public function store(StoreTestimonyRequest $request)
     {
-        //
+        $validated_data = $request->validated();
+
+        $response = $this->testimonyRepository->createTestimony($validated_data);
+        return $response ? res_success('Testimony Posted Successfully', $response) : res_not_found('something went wrong');
     }
 
     /**
@@ -64,9 +67,10 @@ class TestimonyController extends Controller
      * @param  \App\Models\Testimony  $testimony
      * @return \Illuminate\Http\Response
      */
-    public function show(Testimony $testimony)
+    public function show(Request $request)
     {
-        //
+        $testimonyId = $request->route('id');
+        return $this->testimonyRepository->getTestimonyById($testimonyId);
     }
 
     /**
@@ -87,9 +91,18 @@ class TestimonyController extends Controller
      * @param  \App\Models\Testimony  $testimony
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTestimonyRequest $request, Testimony $testimony)
+    public function update(Request $request, Testimony $testimony)
     {
-        //
+        $testimonyId = $request->route('id');
+
+        $testimonyDetails = $request->only([
+            'name',
+            'details',
+            'profession',
+            'rating'
+    ]);
+        $response = $this->testimonyRepository->updateTestimony($testimonyId, $testimonyDetails);
+        return $response ? res_success('Updated $testimony', $response) : res_not_found('something went wrong');
     }
 
     /**
@@ -98,8 +111,10 @@ class TestimonyController extends Controller
      * @param  \App\Models\Testimony  $testimony
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Testimony $testimony)
+    public function delete(Testimony $testimony, Request $request)
     {
-        //
+            $testimonyId = $request->route('id');
+            $response = $this->testimonyRepository->deleteTestimony($testimonyId);
+            return $response ? res_completed('Testimony of Id ' . $testimonyId . ' Deleted successfully') : res_not_found('something went wrong');
     }
 }
