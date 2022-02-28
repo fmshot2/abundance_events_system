@@ -13,7 +13,7 @@ class TestimonyFactory extends Factory
      */
     public function definition()
     {
-        return [             
+        return [
             'details'       => $this->faker->sentences(4, true),
             'name'          => $this->faker->name(),
             'profession'    => $this->faker->word(),
