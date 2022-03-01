@@ -41,6 +41,7 @@ Route::post('about', [AboutController::class, 'store']);
 Route::put('about/{id}', [AboutController::class, 'update']);
 Route::delete('about/{id}', [AboutController::class, 'delete']);
 
+Route::get('event', [EventController::class, 'index']);
 
 Route::get('event/{id}', [EventController::class, 'show']);
 Route::get('upcomingevents', [EventController::class, 'showUpcomingEvent']);
@@ -75,7 +76,6 @@ Route::put('statistic/{id}', [StatisticController::class, 'update']);
 Route::delete('statistic/{id}', [StatisticController::class, 'delete']);
 
 Route::group(['middleware' => ['jwt.verify']], function() {
-    Route::get('event', [EventController::class, 'index']);
 
     // Route::get('user', 'UserController@getAuthenticatedUser');
     // Route::get('closed', 'DataController@closed');

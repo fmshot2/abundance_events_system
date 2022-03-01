@@ -27,4 +27,12 @@ class Item extends Model
             // return $this->belongsTo(Event::class, 'event_id', 'other_key');
 
         }
+
+        /**
+     * Get the listings for the user.
+     */
+    public function speakers()
+    {
+        return $this->hasMany(Speaker::class);
+    }
 }

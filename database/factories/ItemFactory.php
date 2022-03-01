@@ -14,7 +14,12 @@ class ItemFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'details'       => $this->faker->sentences(4, true),
+            'date'         => $this->faker->dateTime($max = 'now', $timezone = null),
+            'time'         => $this->faker->dateTime($max = 'now', $timezone = null),
+            'title'         => $this->faker->word(),
+            'event_id'         => $this->faker->numberBetween(1,15)
+
         ];
     }
 }

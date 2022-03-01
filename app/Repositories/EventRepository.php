@@ -5,13 +5,15 @@ namespace App\Repositories;
 use App\Interfaces\EventRepositoryInterface;
 use App\Models\Event;
 use Carbon\Carbon;
+use App\Http\Resources\EventResource;
 
 
 class EventRepository implements EventRepositoryInterface
 {
     public function getAllEvents()
     {
-        return Event::orderBy('id', 'ASC')->get();
+        return EventResource::collection(Event::orderBy('id', 'ASC')->get());
+        // return new EventResource::orderBy('id', 'ASC')->get();
     }
 
     public function getEventById($eventId)
@@ -37,7 +39,7 @@ class EventRepository implements EventRepositoryInterface
         $response =  Event::findOrFail($eventId);
 
         $response->update($newDetails);
-        
+
         return $response;
     }
 

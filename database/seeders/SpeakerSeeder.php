@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\item;
+use App\Models\Speaker;
 
-class ItemSeeder extends Seeder
+class SpeakerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class ItemSeeder extends Seeder
      */
     public function run()
     {
-        item::factory()->times(40)->create();
+        Speaker::factory()->times(30)->create();
 
     }
 }
