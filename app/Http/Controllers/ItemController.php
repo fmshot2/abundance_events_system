@@ -5,9 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use App\Http\Requests\StoreItemRequest;
 use App\Http\Requests\UpdateItemRequest;
+use App\Interfaces\ItemRepositoryInterface;
+use Carbon\Carbon;
+
+
 
 class ItemController extends Controller
 {
+    private $itemRepository;
+
+    public function __construct(ItemRepositoryInterface $itemRepository)
+    {
+        $this->itemRepository = $itemRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,17 +25,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $this->itemRepository->getAllItems();
     }
 
     /**
@@ -36,7 +36,14 @@ class ItemController extends Controller
      */
     public function store(StoreItemRequest $request)
     {
-        //
+        //Request Validated data
+        $validated_data = $request->validated();
+        $validated_data['date'] = Carbon::parse($validated_data['date'])->format('Y-m-d');
+
+
+        $response = $this->itemRepository->createItem($validated_data);
+        return $response ? res_success('Item Posted Successfully', $response) :
+         res_not_found('something went wrong');
     }
 
     /**

@@ -13,7 +13,6 @@ if (!function_exists('res_success')) {
     }
 }
 
-
 if (!function_exists('res_success')) {
     function res_success($message, $data)
     {

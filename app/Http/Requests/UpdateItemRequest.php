@@ -24,7 +24,10 @@ class UpdateItemRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title'            => ['sometimes', 'required', 'max:255', 'string'],
+            'details'          => ['sometimes', 'required', 'string'],
+            'date'             => ['sometimes', 'required', 'string'],
+            'time'             => ['sometimes', 'required', 'string'],
         ];
     }
 }

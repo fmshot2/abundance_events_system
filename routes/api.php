@@ -9,6 +9,8 @@ use App\Http\Controllers\TestimonyController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\StatisticController;
+use App\Http\Controllers\ItemController;
+
 
 use App\Http\Controllers\AuthController;
 
@@ -49,6 +51,12 @@ Route::get('previousevents', [EventController::class, 'showPreviousEvent']);
 Route::post('event', [EventController::class, 'store']);
 Route::put('event/{id}', [EventController::class, 'update']);
 Route::delete('event/{id}', [EventController::class, 'delete']);
+
+Route::get('item', [ItemController::class, 'index']);
+Route::get('item/{id}', [ItemController::class, 'show']);
+Route::post('item', [ItemController::class, 'store']);
+Route::put('item/{id}', [ItemController::class, 'update']);
+Route::delete('item/{id}', [ItemController::class, 'delete']);
 
 Route::get('testimony', [TestimonyController::class, 'index']);
 Route::get('testimony/{id}', [TestimonyController::class, 'show']);

@@ -16,13 +16,13 @@ class SpeakerResource extends JsonResource
     {
         // return parent::toArray($request);
         return [
-
-            'fullname'         => $this->fullname,
+            'id'                => $this->id,
+            'fullname'          => $this->fullname,
             'title'             => $this->title,
-            'qualifications'     => $this->qualifications,
-            'topic_details'       => $this->topic_details,
-            'created_at'    => (string) $this->created_at,
-            'updated_at'    => (string) $this->updated_at,
+            'qualifications'    => $this->qualifications,
+            'topic_details'     => $this->topic_details,
+            'created_at'        => (string) $this->created_at,
+            'updated_at'        => (string) $this->updated_at,
             ];
     }
 }

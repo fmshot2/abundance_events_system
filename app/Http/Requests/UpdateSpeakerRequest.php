@@ -13,7 +13,7 @@ class UpdateSpeakerRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,12 @@ class UpdateSpeakerRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
-            //
+            'fullname'                => ['sometimes', 'required', 'max:255', 'string'],
+            'title'                   => ['sometimes', 'nullabe', 'max:255', 'string'],
+            'qualifications'          => ['sometimes', 'nullable', 'string'],
+            'topic_details'           => ['sometimes', 'required', 'string'],
         ];
     }
 }

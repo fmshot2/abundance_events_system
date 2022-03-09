@@ -7,13 +7,10 @@ use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
 
 use App\Interfaces\EventRepositoryInterface;
-use Illuminate\Http\JsonResposnse;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Carbon\Carbon;
-
-use App\Http\Resources\EventResource;
-
 
 
 class EventController extends Controller
@@ -32,9 +29,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $response = $this->eventRepository->getAllEvents();
-        return $response ? res_success('Event Retrieved Successfully', $response) : res_not_found('something went wrong');
-
+        return $this->eventRepository->getAllEvents();
     }
 
 
@@ -50,7 +45,7 @@ class EventController extends Controller
          $validated_data = $request->validated();
          $validated_data['date'] = Carbon::parse($validated_data['date'])->format('Y-m-d');
 
-
+ 
          $response = $this->eventRepository->createEvent($validated_data);
          return $response ? res_success('Event Posted Successfully', $response) : res_not_found('something went wrong');
 
@@ -65,9 +60,7 @@ class EventController extends Controller
     public function show(Request $request)
     {
         $eventId = $request->route('id');
-        $event = $this->eventRepository->getEventById($eventId);
-        return $event ? res_success('Event Retrieved Successfully', new EventResource($event)) : res_not_found('something went wrong');
-
+        return $this->eventRepository->getEventById($eventId);
     }
 
     public function showUpcomingEvent()
@@ -116,7 +109,7 @@ class EventController extends Controller
         $eventId = $request->route('id');
 
         $response = $this->eventRepository->deleteEvent($eventId);
-
+        
         return $response ? res_completed('Event of Id ' . $eventId . ' Deleted successfully') : res_not_found('something went wrong');
     }
 }

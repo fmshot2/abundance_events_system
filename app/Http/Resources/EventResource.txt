@@ -18,12 +18,12 @@ class EventResource extends JsonResource
     {
         // return parent::toArray($request);
         return [
-            'id'            => $this->id,
-            'details'       => $this->details,
-            'title'         => $this->title,
-            'items'         => ItemResource::collection($this->items),
-            'created_at'    => (string) $this->created_at,
-            'updated_at'    => (string) $this->updated_at,
+
+            'details'   => $this->details,
+            'title'     => $this->title,
+            'items' => ItemResource::collection($this->items),
+            'created_at' => (string) $this->created_at,
+            'updated_at' => (string) $this->updated_at,
           ];
     }
 }

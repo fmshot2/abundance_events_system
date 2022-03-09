@@ -13,7 +13,7 @@ class StoreSpeakerRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class StoreSpeakerRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title'                   => ['sometimes', 'nullabe', 'max:255', 'string'],
+            'qualifications'          => ['sometimes', 'nullable', 'string'],
+            'topic_details'           => ['sometimes', 'required', 'string'],
         ];
     }
 }

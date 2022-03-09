@@ -9,6 +9,13 @@ class Speaker extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'fullname',
+        'title',
+        'qualifications',
+        'topic_details'
+    ];
+
       /**
          * Get the item that owns the Speaker
          *
