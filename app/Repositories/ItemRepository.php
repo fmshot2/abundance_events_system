@@ -43,28 +43,10 @@ class ItemRepository implements ItemRepositoryInterface
         return $response;
     }
 
-//     public function getUpcomingEvent()
-//     {
-//         return Item::whereDate('date', '>', Carbon::now())->get();
-//     }
+    public function getItemsForEvent($eventId)
+    {
+        $response =  Item::where('event_id',$eventId)->get();
 
-//     public function getPreviousEvent()
-//     {
-//         $previousEvents = Item::whereDate('date', '<', Carbon::now())->get();
-
-// //        ss foreach ($previousEvents as $previousEvent => $value) {
-// //             $date = Carbon::parse($previousEvent['date']);
-// //             $previousEvent['date'] = Carbon::createFromFormat('d/m/Y', $date);
-
-// // //             $dateString = '25/08/2017';
-// // // $dateObject = \Carbon::createFromFormat('d/m/Y', $dateString);
-
-// //         }
-//         return $previousEvents;
-//     }
-
-    // public function getFulfilledOrders()
-    // {
-    //     return Order::where('is_fulfilled', true);
-    // }
+        return $response;
+    }
 }

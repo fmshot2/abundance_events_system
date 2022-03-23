@@ -6,6 +6,8 @@ use App\Interfaces\EventRepositoryInterface;
 use App\Models\Event;
 use Carbon\Carbon;
 use App\Http\Resources\EventResource;
+use App\Models\Item;
+
 
 
 class EventRepository implements EventRepositoryInterface
@@ -62,9 +64,4 @@ class EventRepository implements EventRepositoryInterface
 //         }
         return $previousEvents;
     }
-
-    // public function getFulfilledOrders()
-    // {
-    //     return Order::where('is_fulfilled', true);
-    // }
 }

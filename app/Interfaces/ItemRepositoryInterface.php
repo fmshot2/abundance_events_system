@@ -9,6 +9,8 @@ interface ItemRepositoryInterface
     public function deleteItem($itemId);
     public function createItem(array $itemDetails);
     public function updateItem($itemId, array $newDetails);
+    public function getItemsForEvent($eventId);
+
     // public function getUpcomingItem();
     // public function getPreviousItem();
     // public function getFulfilledOrders();

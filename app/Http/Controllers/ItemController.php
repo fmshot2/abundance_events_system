@@ -6,6 +6,10 @@ use App\Models\Item;
 use App\Http\Requests\StoreItemRequest;
 use App\Http\Requests\UpdateItemRequest;
 use App\Interfaces\ItemRepositoryInterface;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use App\Http\Resources\ItemResource;
+
 use Carbon\Carbon;
 
 
@@ -45,6 +49,17 @@ class ItemController extends Controller
         return $response ? res_success('Item Posted Successfully', $response) :
          res_not_found('something went wrong');
     }
+
+    public function get_items_for_event(Request $request){
+
+        $eventId = $request->route('event_id');
+
+        $event = $this->itemRepository->getItemsForEvent($eventId);
+
+        return $event ? res_success('Event Items Retrieved Successfully', ItemResource::collection($event)) : res_not_found('something went wrong');
+
+    }
+
 
     /**
      * Display the specified resource.
