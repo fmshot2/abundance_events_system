@@ -70,6 +70,7 @@ class ItemController extends Controller
     public function show(Request $request)
     {
         $itemId = $request->route('id');
+
         $item = $this->itemRepository->getItemById($itemId);
         return $item ? res_success('Item Retrieved Successfully', new ItemResource($item)) : res_not_found('something went wrong');
     }
