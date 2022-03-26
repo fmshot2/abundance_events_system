@@ -76,26 +76,21 @@ class ItemController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Item  $item
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Item $item)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateItemRequest  $request
      * @param  \App\Models\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateItemRequest $request, Item $item)
+    public function update(UpdateItemRequest $request)
     {
-        //
+        $itemId = $request->route('id');
+
+         //Retrieve the validate user input
+         $validated_data = $request->validated();
+
+        $response = $this->itemRepository->updateItem($itemId, $validated_data);
+        return $response ? res_success('Updated Item.', $response) : res_not_found('something went wrong');
     }
 
     /**

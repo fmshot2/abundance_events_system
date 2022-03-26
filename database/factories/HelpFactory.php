@@ -16,7 +16,8 @@ class HelpFactory extends Factory
         return [
             'details'           => $this->faker->sentences(4, true),
             'title'             => $this->faker->name(),
-            'date'              => $this->faker->dateTime($max = 'now', $timezone = null),
+            'date'              => $this->faker->date('Y_m_d'),
+            // $this->faker->dateTime($max = 'now', $timezone = null),
         ];
     }
 }
