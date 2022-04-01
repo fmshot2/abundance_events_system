@@ -10,6 +10,8 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\UserController;
+
 
 
 use App\Http\Controllers\AuthController;
@@ -86,6 +88,14 @@ Route::get('statistic/{id}', [StatisticController::class, 'show']);
 Route::post('statistic', [StatisticController::class, 'store']);
 Route::put('statistic/{id}', [StatisticController::class, 'update']);
 Route::delete('statistic/{id}', [StatisticController::class, 'delete']);
+
+
+//statistic routes
+Route::get('user', [UserController::class, 'index']);
+Route::get('user/{id}', [UserController::class, 'show']);
+Route::post('user', [UserController::class, 'store']);
+Route::put('user/{id}', [UserController::class, 'update']);
+Route::delete('user/{id}', [UserController::class, 'delete']);
 
 
 

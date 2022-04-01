@@ -33,6 +33,16 @@ class Event extends Model
         return $this->hasMany(Item::class);
     }
 
+    /**
+     * The users that belong to the event.
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class,
+        'events_users',
+        'event_id',
+        'user_id');
+    }
 
     // /**
     //  * user_has_rated

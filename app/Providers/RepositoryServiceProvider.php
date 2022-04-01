@@ -27,6 +27,8 @@ use App\Repositories\ItemRepository;
 use App\Interfaces\SpeakerRepositoryInterface;
 use App\Repositories\SpeakerRepository;
 
+use App\Interfaces\UserRepositoryInterface;
+use App\Repositories\UserRepository;
 
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -47,6 +49,7 @@ class RepositoryServiceProvider extends ServiceProvider
     $this->app->bind(StatsRepositoryInterface::class, StatsRepository::class);
     $this->app->bind(ItemRepositoryInterface::class, ItemRepository::class);
     $this->app->bind(SpeakerRepositoryInterface::class, SpeakerRepository::class);
+    $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
  }
 
 
