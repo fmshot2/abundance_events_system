@@ -12,6 +12,7 @@ use App\Http\Resources\ItemResource;
 
 use Carbon\Carbon;
 
+use App\Models\Event;
 
 
 class ItemController extends Controller
@@ -43,6 +44,13 @@ class ItemController extends Controller
         //Request Validated data
         $validated_data = $request->validated();
         $validated_data['date'] = Carbon::parse($validated_data['date'])->format('Y-m-d');
+        $event = Event::findorFail($request->route('event_id'));
+        if (!$event) {
+            res_not_found("This event doesn't exist");
+        }
+        $validated_data['event_id'] = intval($request->route('event_id'));
+        // return response()->json($validated_data, 200);
+
 
 
         $response = $this->itemRepository->createItem($validated_data);

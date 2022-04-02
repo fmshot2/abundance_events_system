@@ -13,7 +13,8 @@ class Item extends Model
         'details',
         'title',
         'date',
-        'time'
+        'time',
+        'event_id'
     ];
 
         /**

@@ -40,12 +40,26 @@ class Handler extends ExceptionHandler
             //
         });
 
+        //old method
+        // $this->renderable(function (NotFoundHttpException $e, $request) {
+        //     if ($request->is('api/*')) {
+        //         return response()->json([
+        //             'message' => 'Record not found.'
+        //         ], 404);
+        //     }
+        // });
+
         $this->renderable(function (NotFoundHttpException $e, $request) {
             if ($request->is('api/*')) {
                 return response()->json([
-                    'message' => 'Record not found.'
+                    'status' => 'error',
+                    'status_code' => '013',
+                    'message' => "This event doesn't exist",
+                    'error' => 'Not Found.'
                 ], 404);
             }
         });
+
+
     }
 }

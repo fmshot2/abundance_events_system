@@ -28,6 +28,7 @@ class StoreItemRequest extends FormRequest
             'details'          => ['required', 'string'],
             'date'             => ['nullable', 'string'],
             'time'             => ['nullable', 'string'],
+            // 'event_id'         => ['required', 'string']
         ];
     }
 }

@@ -57,7 +57,7 @@ Route::delete('event/{id}', [EventController::class, 'delete']);
 //item routes
 Route::get('item', [ItemController::class, 'index']);
 Route::get('item/{id}', [ItemController::class, 'show']);
-Route::post('item', [ItemController::class, 'store']);
+Route::post('event/{event_id}/item', [ItemController::class, 'store']);
 Route::put('item/{id}', [ItemController::class, 'update']);
 Route::delete('item/{id}', [ItemController::class, 'delete']);
 Route::get('event/{event_id}/items', [ItemController::class, 'get_items_for_event']);
