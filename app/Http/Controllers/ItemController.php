@@ -107,8 +107,10 @@ class ItemController extends Controller
      * @param  \App\Models\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Item $item)
+    public function delete(Item $item, Request $request)
     {
-        //
+        $itemId = $request->route('id');
+        $response = $this->itemRepository->deleteItem($itemId);
+        return $response ? res_completed('Item of Id ' . $itemId . ' Deleted successfully') : res_not_found('something went wrong');
     }
 }

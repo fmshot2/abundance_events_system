@@ -54,7 +54,7 @@ class Handler extends ExceptionHandler
                 return response()->json([
                     'status' => 'error',
                     'status_code' => '013',
-                    'message' => "This event doesn't exist",
+                    'message' => "The data does not exist",
                     'error' => 'Not Found.'
                 ], 404);
             }
