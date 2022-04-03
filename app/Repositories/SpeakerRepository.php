@@ -14,7 +14,7 @@ class SpeakerRepository implements SpeakerRepositoryInterface
 {
     public function getAllSpeakers()
     {
-        return SpeakerResource::collection(Item::orderBy('id', 'ASC')->get());
+        return SpeakerResource::collection(Speaker::orderBy('id', 'ASC')->get());
         // return new EventResource::orderBy('id', 'ASC')->get();
     }
 

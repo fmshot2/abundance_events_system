@@ -18,7 +18,7 @@ class SpeakerFactory extends Factory
             'fullname'         => $this->faker->name(),
             'title'         => $this->faker->word(),
             'qualifications' => $this->faker->name(),
-            'item_id'         => $this->faker->numberBetween(1,15)
+            'item_id'         => $this->faker->numberBetween(1,40)
         ];
     }
 }

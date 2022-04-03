@@ -13,7 +13,8 @@ class Speaker extends Model
         'fullname',
         'title',
         'qualifications',
-        'topic_details'
+        'topic_details',
+        'item_id'
     ];
 
       /**
@@ -21,7 +22,7 @@ class Speaker extends Model
          *
          * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
          */
-        public function item(): BelongsTo
+        public function item()
         {
             return $this->belongsTo(Item::class, 'item_id');
             // return $this->belongsTo(Event::class, 'event_id', 'other_key');
