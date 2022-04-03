@@ -11,14 +11,12 @@ use App\Http\Controllers\DetailController;
 use App\Http\Controllers\StatisticController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SpeakerController;
+
 
 
 
 use App\Http\Controllers\AuthController;
-
-
-
-
 
 
 /*
@@ -61,6 +59,14 @@ Route::post('event/{event_id}/item', [ItemController::class, 'store']);
 Route::put('item/{id}', [ItemController::class, 'update']);
 Route::delete('item/{id}', [ItemController::class, 'delete']);
 Route::get('event/{event_id}/items', [ItemController::class, 'get_items_for_event']);
+
+//item routes
+Route::get('speaker', [SpeakerController::class, 'index']);
+Route::get('speaker/{id}', [SpeakerController::class, 'show']);
+Route::post('item/{item_id}/speaker', [SpeakerController::class, 'store']);
+Route::put('speaker/{id}', [SpeakerController::class, 'update']);
+Route::delete('speaker/{id}', [SpeakerController::class, 'delete']);
+Route::get('item/{item_id}/speakers', [SpeakerController::class, 'get_speaker_for_item']);
 
 
 Route::get('testimony', [TestimonyController::class, 'index']);

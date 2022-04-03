@@ -48,10 +48,9 @@ class ItemController extends Controller
         if (!$event) {
             res_not_found("This event doesn't exist");
         }
-        $validated_data['event_id'] = intval($request->route('event_id'));
+        $validated_data['event_id'] =
+        intval($request->route('event_id'));
         // return response()->json($validated_data, 200);
-
-
 
         $response = $this->itemRepository->createItem($validated_data);
         return $response ? res_success('Item Posted Successfully', $response) :

@@ -11,6 +11,7 @@ use App\Interfaces\SpeakerRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Resources\SpeakerResource;
+use App\Models\Item;
 
 use Carbon\Carbon;
 
@@ -40,13 +41,19 @@ class SpeakerController extends Controller
      */
     public function store(StoreSpeakerRequest $request)
     {
-        //Request Validated data
+       //Request Validated data
         $validated_data = $request->validated();
         $validated_data['date'] = Carbon::parse($validated_data['date'])->format('Y-m-d');
+        $item = Item::findorFail($request->route('item_id'));
+        if (!$item) {
+            res_not_found("This Topic doesn't exist");
+        }
+        $validated_data['item_id'] =
+        intval($request->route('item_id'));
+        // return response()->json($validated_data, 200);
 
-
-        $response = $this->speakerRepository->createSpeaker($validated_data);
-        return $response ? res_success('Speaker Posted Successfully', $response) :
+        $response = $this->speakerRepository->createItem($validated_data);
+        return $response ? res_success('Item Posted Successfully', $response) :
          res_not_found('something went wrong');
     }
 

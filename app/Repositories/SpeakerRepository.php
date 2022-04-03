@@ -7,6 +7,8 @@ use App\Models\Speaker;
 use Carbon\Carbon;
 use App\Http\Resources\SpeakerResource;
 
+use App\Models\Item;
+
 
 class SpeakerRepository implements SpeakerRepositoryInterface
 {
