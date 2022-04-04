@@ -24,7 +24,8 @@ class StoreSpeakerRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'                   => ['sometimes', 'nullabe', 'max:255', 'string'],
+            'fullname'                => ['required', 'string'],
+            'title'                   => ['sometimes', 'nullable', 'max:255', 'string'],
             'qualifications'          => ['sometimes', 'nullable', 'string'],
             'topic_details'           => ['sometimes', 'required', 'string'],
         ];
