@@ -31,7 +31,7 @@ class SpeakerRepository implements SpeakerRepositoryInterface
         return $response;
     }
 
-    public function createSpeaker(array $eventDetails)
+    public function createSpeaker(array $speakerDetails)
     {
         return Speaker::create($speakerDetails);
     }

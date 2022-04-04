@@ -43,7 +43,6 @@ class SpeakerController extends Controller
     {
        //Request Validated data
         $validated_data = $request->validated();
-        $validated_data['date'] = Carbon::parse($validated_data['date'])->format('Y-m-d');
         $item = Item::findorFail($request->route('item_id'));
         if (!$item) {
             res_not_found("This Topic doesn't exist");
@@ -52,7 +51,7 @@ class SpeakerController extends Controller
         intval($request->route('item_id'));
         // return response()->json($validated_data, 200);
 
-        $response = $this->speakerRepository->createItem($validated_data);
+        $response = $this->speakerRepository->createSpeaker($validated_data);
         return $response ? res_success('Item Posted Successfully', $response) :
          res_not_found('something went wrong');
     }
