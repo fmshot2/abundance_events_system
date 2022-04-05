@@ -14,7 +14,7 @@ class ItemSeeder extends Seeder
      */
     public function run()
     {
-        item::factory()->times(40)->create();
+        item::factory()->times(10)->create();
 
     }
 }

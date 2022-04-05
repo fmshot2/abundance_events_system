@@ -26,9 +26,9 @@ class UpdateSpeakerRequest extends FormRequest
 
         return [
             'fullname'                => ['sometimes', 'required', 'max:255', 'string'],
-            'title'                   => ['sometimes', 'nullabe', 'max:255', 'string'],
+            'title'                   => ['sometimes', 'nullable', 'max:255', 'string'],
             'qualifications'          => ['sometimes', 'nullable', 'string'],
-            'topic_details'           => ['sometimes', 'required', 'string'],
+            // 'topic_details'           => ['sometimes', 'required', 'string'],
         ];
     }
 }

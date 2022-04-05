@@ -44,6 +44,8 @@ class ItemController extends Controller
         //Request Validated data
         $validated_data = $request->validated();
         $validated_data['date'] = Carbon::parse($validated_data['date'])->format('Y-m-d');
+        $validated_data['time_start'] = Carbon::parse($validated_data['time_start'])->format('h:m:s');
+        $validated_data['time_end'] = Carbon::parse($validated_data['time_end'])->format('h:m:s');
         $event = Event::findorFail($request->route('event_id'));
         if (!$event) {
             res_not_found("This event doesn't exist");
@@ -96,6 +98,9 @@ class ItemController extends Controller
          //Retrieve the validate user input
          $validated_data = $request->validated();
 
+         $validated_data['date'] = Carbon::parse($validated_data['date'])->format('Y-m-d');
+         $validated_data['time_start'] = Carbon::parse($validated_data['time_start'])->format('h:m:s');
+         $validated_data['time_end'] = Carbon::parse($validated_data['time_end'])->format('h:m:s');
         $response = $this->itemRepository->updateItem($itemId, $validated_data);
         return $response ? res_success('Updated Item.', $response) : res_not_found('something went wrong');
     }

@@ -17,9 +17,9 @@ class CreateSpeakersTable extends Migration
             $table->id();
             $table->string('fullname');
             $table->string('title');
-            $table->string('qualifications');
-            $table->string('topic_details');
-            $table->integer('item_id');
+            $table->string('qualifications')->nullable();
+            // $table->string('topic_details');
+            // $table->integer('item_id');
             $table->timestamps();
         });
     }

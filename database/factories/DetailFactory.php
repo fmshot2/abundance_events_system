@@ -21,7 +21,7 @@ class DetailFactory extends Factory
             'phone_1'         => $this->faker->unique()->regexify('09[0-9]{9}'),
             'phone_2'         => $this->faker->unique()->regexify('09[0-9]{9}'),
             'phone_3'         => $this->faker->unique()->regexify('09[0-9]{9}'),
-            'address'       => $this->faker->paragraph(),
+            'address'       => $this->faker->sentences(4, true),
             'facebook'      => $this->faker->url(),
             'linkedin'      => $this->faker->url(),
             'twitter'       => $this->faker->url(),

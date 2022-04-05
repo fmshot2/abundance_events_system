@@ -27,7 +27,8 @@ class UpdateItemRequest extends FormRequest
             'title'            => ['sometimes', 'required', 'max:255', 'string'],
             'details'          => ['sometimes', 'required', 'string'],
             'date'             => ['sometimes', 'required', 'string'],
-            'time'             => ['sometimes', 'required', 'string'],
+            'time_start'       => ['nullable', 'string'],
+            'time_end'         => ['nullable', 'string'],
         ];
     }
 }

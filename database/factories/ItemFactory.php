@@ -14,13 +14,15 @@ class ItemFactory extends Factory
     public function definition()
     {
         return [
-            'details'       => $this->faker->sentences(4, true),
-            'date'         => $this->faker->date('Y_m_d'),
+            'details'           => $this->faker->sentences(4, true),
+            'date'              => $this->faker->date('Y_m_d'),
             // $this->faker->dateTime($max = 'now', $timezone = null),
-            'time'         => $this->faker->time('H-i-s'),
-            'title'         => $this->faker->word(),
-            'event_id'         => $this->faker->numberBetween(1,15)
-
+            // 'time'           => $this->faker->time('H-i-s'),
+            'time_start'        => $this->faker->time('H:i:s'),
+            'time_end'          => $this->faker->time('H:i:s'),
+            'title'             => $this->faker->word(),
+            'event_id'          => $this->faker->numberBetween(1,15),
+            'speaker_id'        => $this->faker->numberBetween(1,3)
         ];
     }
 }

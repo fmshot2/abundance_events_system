@@ -18,8 +18,12 @@ class CreateItemsTable extends Migration
             $table->text('details');
             $table->string('title');
             $table->date('date');
-            $table->string('time');
-            $table->integer('event_id');
+            $table->time('time_start')->nullable();
+            $table->time('time_end')->nullable();
+            $table->foreignId('event_id')->constrained('events')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('speaker_id')->nullable()->constrained('speakers')->onUpdate('cascade')->onDelete('cascade');
+            // $table->integer('event_id');
+            // $table->integer('speaker_id')->nullable();
             $table->timestamps();
         });
     }

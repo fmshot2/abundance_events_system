@@ -27,7 +27,7 @@ class StoreSpeakerRequest extends FormRequest
             'fullname'                => ['required', 'string'],
             'title'                   => ['sometimes', 'nullable', 'max:255', 'string'],
             'qualifications'          => ['sometimes', 'nullable', 'string'],
-            'topic_details'           => ['sometimes', 'required', 'string'],
+            // 'topic_details'           => ['sometimes', 'required', 'string'],
         ];
     }
 }

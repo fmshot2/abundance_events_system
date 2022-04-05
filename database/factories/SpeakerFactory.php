@@ -14,11 +14,11 @@ class SpeakerFactory extends Factory
     public function definition()
     {
         return [
-            'topic_details'       => $this->faker->name(),
+            // 'topic_details'       => $this->faker->name(),
             'fullname'         => $this->faker->name(),
             'title'         => $this->faker->word(),
             'qualifications' => $this->faker->name(),
-            'item_id'         => $this->faker->numberBetween(1,40)
+            // 'item_id'         => $this->faker->numberBetween(1,40)
         ];
     }
 }

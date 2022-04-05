@@ -52,10 +52,14 @@ class EventController extends Controller
          //Request Validated data
          $validated_data = $request->validated();
          $validated_data['date'] = Carbon::parse($validated_data['date'])->format('Y-m-d');
+         $validated_data['time_start'] = Carbon::parse($validated_data['time_start'])->format('h:m:s');
+         $validated_data['time_end'] = Carbon::parse($validated_data['time_end'])->format('h:m:s');
+        //  return $validated_data;
+
 
 
          $response = $this->eventRepository->createEvent($validated_data);
-         return $response ? res_success('Event Posted Successfully', $response) : res_not_found('something went wrong');
+         return $response ? res_success('Event Posted Successfully', new EventResource($response)) : res_not_found('something went wrong');
 
     }
 

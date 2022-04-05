@@ -14,19 +14,17 @@ class Event extends Model
     protected $fillable = [
         'title',
         'details',
-        'date'
+        'date',
+        'time_start',
+        'time_end'
     ];
 
-    // /**
-    //  * Get the listing category.
-    //  */
-    // public function subcategory()
-    // {
-    //     return $this->belongsTo(Subcategory::class);
-    // }
-
+    // protected $casts = [
+    //     'time_start' => 'hh:mm:ss',
+    //     'time_end' => 'hh:mm:ss'
+    // ];
     /**
-     * Get the listings for the user.
+     * Get the items for the user.
      */
     public function items()
     {

@@ -34,40 +34,6 @@ class SpeakerController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreSPeakerRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreSpeakerRequest $request)
-    {
-       //Request Validated data
-        $validated_data = $request->validated();
-        $item = Item::findorFail($request->route('item_id'));
-        if (!$item) {
-            res_not_found("This Topic doesn't exist");
-        }
-        $validated_data['item_id'] =
-        intval($request->route('item_id'));
-        // return response()->json($validated_data, 200);
-
-        $response = $this->speakerRepository->createSpeaker($validated_data);
-        return $response ? res_success('Item Posted Successfully', $response) :
-         res_not_found('something went wrong');
-    }
-
-    public function get_speakers_for_event(Request $request){
-
-        $eventId = $request->route('event_id');
-
-        $event = $this->speakerRepository->getSpeakersForEvent($speakerId);
-
-        return $speaker ? res_success('Event Speakers Retrieved Successfully', SpeakerResource::collection($speaker)) : res_not_found('something went wrong');
-
-    }
-
-
-    /**
      * Display the specified resource.
      *
      * @param  \App\Models\Speaker  $speaker
@@ -82,6 +48,30 @@ class SpeakerController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \App\Http\Requests\StoreSPeakerRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(StoreSpeakerRequest $request)
+    {
+       //Request Validated data
+        $validated_data = $request->validated();
+        // $item = Item::findorFail($request->route('item_id'));
+        // if (!$item) {
+        //     res_not_found("This Topic doesn't exist");
+        // }
+        // $validated_data['item_id'] =
+        // intval($request->route('item_id'));
+        // // return response()->json($validated_data, 200);
+
+        $response = $this->speakerRepository->createSpeaker($validated_data);
+        return $response ? res_success('Item Posted Successfully', $response) :
+         res_not_found('something went wrong');
+    }
+
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateSpeakerRequest  $request
@@ -93,11 +83,22 @@ class SpeakerController extends Controller
         $speakerId = $request->route('id');
 
          //Retrieve the validate user input
-         $validated_data = $request->validated();
+        $validated_data = $request->validated();
 
         $response = $this->speakerRepository->updateSpeaker($speakerId, $validated_data);
         return $response ? res_success('Updated Speaker.', $response) : res_not_found('something went wrong');
     }
+
+    public function get_speakers_for_event(Request $request){
+
+        $eventId = $request->route('event_id');
+
+        $event = $this->speakerRepository->getSpeakersForEvent($speakerId);
+
+        return $speaker ? res_success('Event Speakers Retrieved Successfully', SpeakerResource::collection($speaker)) : res_not_found('something went wrong');
+
+    }
+
 
     /**
      * Remove the specified resource from storage.
@@ -105,8 +106,13 @@ class SpeakerController extends Controller
      * @param  \App\Models\Speaker  $speaker
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Speaker $speaker)
+    public function delete(Request $request)
     {
-        //
+
+        $speakerId = $request->route('id');
+
+        $response = $this->speakerRepository->deleteSpeaker($speakerId);
+
+        return $response ? res_completed('Speaker of Id ' . $speakerId . ' Deleted successfully') : res_not_found('something went wrong');
     }
 }

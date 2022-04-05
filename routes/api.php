@@ -63,7 +63,8 @@ Route::get('event/{event_id}/items', [ItemController::class, 'get_items_for_even
 //item routes
 Route::get('speaker', [SpeakerController::class, 'index']);
 Route::get('speaker/{id}', [SpeakerController::class, 'show']);
-Route::post('item/{item_id}/speaker', [SpeakerController::class, 'store']);
+Route::post('speaker', [SpeakerController::class, 'store']);
+// Route::post('item/{item_id}/speaker', [SpeakerController::class, 'store']);
 Route::put('speaker/{id}', [SpeakerController::class, 'update']);
 Route::delete('speaker/{id}', [SpeakerController::class, 'delete']);
 Route::get('item/{item_id}/speakers', [SpeakerController::class, 'get_speaker_for_item']);

@@ -22,9 +22,9 @@ class SpeakerResource extends JsonResource
             'fullname'          => $this->fullname,
             'title'             => $this->title,
             'qualifications'    => $this->qualifications,
-            'topic_details'     => $this->topic_details,
-            'item_id'           => $this->item_id,
-            'topic_title'       => $this->item->title,
+            // 'topic_details'     => $this->topic_details,
+            // 'item_id'           => $this->item_id,
+            // 'topic_title'       => $this->item->title,
             'created_at'        => (string) $this->created_at,
             'updated_at'        => (string) $this->updated_at,
             ];

@@ -22,9 +22,9 @@ class Speaker extends Model
          *
          * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
          */
-        public function item()
+        public function items()
         {
-            return $this->belongsTo(Item::class, 'item_id');
+            return $this->hasMany(Item::class);
             // return $this->belongsTo(Event::class, 'event_id', 'other_key');
 
         }

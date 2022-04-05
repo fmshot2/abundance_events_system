@@ -13,8 +13,10 @@ class Item extends Model
         'details',
         'title',
         'date',
-        'time',
-        'event_id'
+        'time_start',
+        'time_end',
+        'event_id',
+        'speaker_id'
     ];
 
         /**
@@ -22,7 +24,7 @@ class Item extends Model
          *
          * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
          */
-        public function event(): BelongsTo
+        public function event()
         {
             return $this->belongsTo(Event::class, 'event_id');
             // return $this->belongsTo(Event::class, 'event_id', 'other_key');
@@ -32,8 +34,8 @@ class Item extends Model
         /**
      * Get the listings for the user.
      */
-    public function speakers()
+    public function speaker()
     {
-        return $this->hasMany(Speaker::class);
+        return $this->belongsTo(Speaker::class, 'speaker_id');
     }
 }
