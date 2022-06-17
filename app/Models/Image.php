@@ -9,7 +9,7 @@ class Image extends Model
 {
     use HasFactory;
 
-    public function imageable()
+    public function parentable()
     {
         return $this->morphTo();
     }

@@ -30,6 +30,9 @@ use App\Repositories\SpeakerRepository;
 use App\Interfaces\UserRepositoryInterface;
 use App\Repositories\UserRepository;
 
+use App\Interfaces\ImageRepositoryInterface;
+use App\Interfaces\ImageRepository;
+
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -50,6 +53,7 @@ class RepositoryServiceProvider extends ServiceProvider
     $this->app->bind(ItemRepositoryInterface::class, ItemRepository::class);
     $this->app->bind(SpeakerRepositoryInterface::class, SpeakerRepository::class);
     $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
+    $this->app->bind(ImageRepositoryInterface::class, ImageRepository::class);
  }
 
 

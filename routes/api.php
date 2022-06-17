@@ -106,6 +106,14 @@ Route::delete('user/{id}', [UserController::class, 'delete']);
 
 
 
+Route::get('tutorial', [TutorialController::class, 'index']);
+Route::get('tutorial/{id}', [TutorialController::class, 'show']);
+Route::post('tutorial', [TutorialController::class, 'store']);
+Route::put('tutorial/{id}', [TutorialController::class, 'update']);
+Route::delete('tutorial/{id}', [TutorialController::class, 'delete']);
+
+
+
 Route::group(['middleware' => ['jwt.verify']], function() {
 
     // Route::get('user', 'UserController@getAuthenticatedUser');

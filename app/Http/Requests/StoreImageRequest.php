@@ -24,7 +24,10 @@ class StoreImageRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'url'            => ['sometimes', 'nullable', 'max:255', 'string'],
+            'image_type'          => ['sometimes', 'nullable', 'string'],
+            'parentable_id'          => ['sometimes', 'nullable', 'string'],
+            'parentable_type'          => ['sometimes', 'nullable', 'string'],
         ];
     }
 }

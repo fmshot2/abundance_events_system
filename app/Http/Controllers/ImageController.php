@@ -6,8 +6,22 @@ use App\Models\Image;
 use App\Http\Requests\StoreImageRequest;
 use App\Http\Requests\UpdateImageRequest;
 
+
+
+use App\Interfaces\ImageRepositoryInterface;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
+
 class ImageController extends Controller
 {
+    private ImageRepositoryInterface $imagetRepository;
+
+    public function __construct(ImageRepositoryInterface $imageRepository)
+    {
+        $this->imageRepository = $imageRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -23,9 +37,14 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(StoreAboutRequest $request)
     {
-        //
+        //Request Validated data
+        $validated_data = $request->validated();
+
+        $response = $this->imageRepository->createImage($validated_data);
+
+        return $response ? res_success('image Posted Successfully', $response) : res_not_found('something went wrong');
     }
 
     /**
